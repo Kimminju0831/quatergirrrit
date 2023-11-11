@@ -177,6 +177,23 @@
     <h1>Vanilla JavaScript App</h1>
     <p>Loading content from the API: <b id="name">...</b></p>
     <p>Findroad API: <b id="findroad">...</b></p>
+
+
+    <label for="startX">출발지 입력</label>
+    <input type="text" id="startX" name="startX" placeholder="출발지를 입력하세요.">
+
+    <label for="startY">도착지 입력</label>
+    <input type="text" id="startY" name="startY" placeholder="도착지를 입력하세요.">
+
+    <button onclick="callTMapAPI()">Convert Addresses</button>
+
+  <p>출발지 좌표: <b id="resultStart">...</b></p>
+  <p>도착지 좌표: <b id="resultEnd">...</b></p>
+  <!-- <button onclick="callTMapAPI()">Convert Addresses</button>
+
+  <p><b id="result">...</b></p> -->
+
+
   </main>
 
   <script>
@@ -185,14 +202,35 @@
       document.querySelector('#name').textContent = text;
     }());
   </script>
-  <script>
+  <!-- <script>
     (async function () {
       const { text } = await (await fetch(`/api/findroad`)).json();
       document.querySelector('#findroad').textContent = text;
     }());
-  </script>
+  </script> -->
 
-  </script>
+
+<script>
+  async function callTMapAPI() {
+    const startX = document.getElementById('startX').value;
+    const startY = document.getElementById('startY').value;
+
+    const urlX = `/api/convertAddress?address=${encodeURIComponent(startX)}`;
+    const responseX = await fetch(urlX);
+    const dataX = await responseX.json();
+
+    const urlY = `/api/convertAddress?address=${encodeURIComponent(startY)}`;
+    const responseY = await fetch(urlY);
+    const dataY = await responseY.json();
+
+    const resultStartElement = document.getElementById('resultStart');
+    resultStartElement.innerHTML = `${startX} (위도: ${dataX.latitude}, 경도: ${dataX.longitude})`;
+
+    const resultEndElement = document.getElementById('resultEnd');
+    resultEndElement.innerHTML = `${startY} (위도: ${dataY.latitude}, 경도: ${dataY.longitude})`;
+  }
+</script>
+
 
   <script>
     Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
