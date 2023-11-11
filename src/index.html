@@ -7,6 +7,11 @@
   <title>KK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+  <!-- kakaotalk message api -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script type = "text/javascript" src="../api/message/index.js"></script>
+
   <style>
     body {
       font-family: "Noto Sans KR", sans-serif;
@@ -179,4 +184,23 @@
         document.querySelector('#name').textContent = text;
     }());
     </script>
+
+    <script>
+      Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
+
+      function sendLink() { // 카카오톡 공유하기
+          Kakao.Link.sendDefault({
+            objectType: 'text',
+            text: '기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+              webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+            },
+          })
+      }
+    </script>
+
+  <div>
+    <a href="javascript:sendLink();"><img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" /></a>
+  </div>
 </body>
