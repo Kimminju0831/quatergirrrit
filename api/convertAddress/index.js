@@ -35,30 +35,6 @@ module.exports = async function (context, req) {
     }
 };
 
-async function convertAddressToCoordinates(address) {
-    const call_command = `python ./convertAddress/address2grid.py ${address}`;
-    // console.log(call_command);
-
-    const execSync = require('child_process').execSync;
-    const resultBuffer = execSync(call_command, { encoding: 'utf-8' });
-    const result = resultBuffer.toString();
-
-    var jsonData = ""
-    try {
-        jsonData = JSON.parse(result);
-        // console.log(jsonData);
-    } catch (error) {
-        console.error('JSON 파싱 오류:', error.message);
-    }
-
-    context.res.json({
-        // status: 200, /* Defaults to 200 */
-        address: jsonData.address,
-        lon: jsonData.lon,
-        lan: jsonData.lan
-    });
-}
-
 async function getTransitFare(coordinates) {
     const apiUrl = "https://apis.openapi.sk.com/transit/routes";
     const payload = {
