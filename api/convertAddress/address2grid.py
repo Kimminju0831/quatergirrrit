@@ -5,7 +5,7 @@ import sys
 
 def add2gird(address) :
     # address = '경기도 성남시 분당구 판교로 264'
-    url = f'''https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd={address}&reqMulti=S&resCoordType=WGS84GEO'''
+    url = f'https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd={address}&reqMulti=S&resCoordType=WGS84GEO'
 
     headers = {
         "accept": "application/json",
