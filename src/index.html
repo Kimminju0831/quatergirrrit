@@ -30,7 +30,7 @@
     .header {
       display: flex;
       align-items: center;
-      position: fixed;
+      position: xed;
       top: 0;
       left: 0;
       width: 100%;
@@ -187,13 +187,14 @@
 
     <button onclick="callTMapAPI()">Convert Addresses</button>
 
-  <p>출발지 좌표: <b id="resultStart">...</b></p>
-  <p>도착지 좌표: <b id="resultEnd">...</b></p>
-  <!-- <button onclick="callTMapAPI()">Convert Addresses</button>
+    <p>출발지 좌표: <b id="resultStart">...</b></p>
+    <p>도착지 좌표: <b id="resultEnd">...</b></p>
+    <!-- <button onclick="callTMapAPI()">Convert Addresses</button>
 
   <p><b id="result">...</b></p> -->
 
 
+  </main>
   </main>
 
   <script>
@@ -210,27 +211,28 @@
   </script> -->
 
 
-<script>
-  async function callTMapAPI() {
-    const startX = document.getElementById('startX').value;
-    const startY = document.getElementById('startY').value;
+  <script>
+    async function callTMapAPI() {
+      const startX = document.getElementById('startX').value;
+      const startY = document.getElementById('startY').value;
 
-    const urlX = `/api/convertAddress?address=${encodeURIComponent(startX)}`;
-    const responseX = await fetch(urlX);
-    const dataX = await responseX.json();
+      const urlX = `/api/convertAddress?address=${encodeURIComponent(startX)}`;
+      const responseX = await fetch(urlX);
+      const dataX = await responseX.json();
 
-    const urlY = `/api/convertAddress?address=${encodeURIComponent(startY)}`;
-    const responseY = await fetch(urlY);
-    const dataY = await responseY.json();
+      const urlY = `/api/convertAddress?address=${encodeURIComponent(startY)}`;
+      const responseY = await fetch(urlY);
+      const dataY = await responseY.json();
 
-    const resultStartElement = document.getElementById('resultStart');
-    resultStartElement.innerHTML = `${startX} (위도: ${dataX.latitude}, 경도: ${dataX.longitude})`;
+      const resultStartElement = document.getElementById('resultStart');
+      resultStartElement.innerHTML = `${startX} (위도: ${dataX.latitude}, 경도: ${dataX.longitude})`;
 
-    const resultEndElement = document.getElementById('resultEnd');
-    resultEndElement.innerHTML = `${startY} (위도: ${dataY.latitude}, 경도: ${dataY.longitude})`;
-  }
-</script>
+      const resultEndElement = document.getElementById('resultEnd');
+      resultEndElement.innerHTML = `${startY} (위도: ${dataY.latitude}, 경도: ${dataY.longitude})`;
+    }
+  </script>
 
+  </script>
 
   <script>
     Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
@@ -238,7 +240,7 @@
     function sendLink() { // 카카오톡 공유하기
       Kakao.Link.sendDefault({
         objectType: 'text',
-        text: '기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.',
+        text: '안녕하세요, 원콜 서비스를 이용하려 합니다. 물금역에서 대전역으로 12월 11일 오후 12시 23분에 출발하는 기차 승차권 3매를 예매하고 싶어요. 제 이름은 홍길동입니다.',
         link: {
           mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
           webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
