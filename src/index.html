@@ -176,6 +176,7 @@
   <main>
     <h1>Vanilla JavaScript App</h1>
     <p>Loading content from the API: <b id="name">...</b></p>
+    <p>ktx schedule test: <b id="ktx_result"></b></p>
     <p>Findroad API: <b id="findroad">...</b></p>
 
 
@@ -203,6 +204,28 @@
       document.querySelector('#name').textContent = text;
     }());
   </script>
+
+  <script>
+    (async function() {
+      const { res } = await( await fetch(`/api/ktx_schedule`)).json();
+      
+      var res_text = "\n";
+      
+      for (const s in res) {
+        console.log(`${s}`)
+        var one_res = ""
+        
+        for (const item in res[s]) {
+          one_res += `${item} : ${res[s][item]}, `;
+        }
+        one_res += "\n\n\n";
+        res_text += one_res;
+      }
+
+      document.querySelector('#ktx_result').textContent = res_text;
+    }());
+  </script>
+
   <!-- <script>
     (async function () {
       const { text } = await (await fetch(`/api/findroad`)).json();
