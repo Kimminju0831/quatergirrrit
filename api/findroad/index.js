@@ -1,12 +1,14 @@
 module.exports = async function (context, req) {
     try {
+        const { startX, startY, endX, endY } = req.body; // 매개변수로부터 위도, 경도 정보를 받음
+
         const url = "https://apis.openapi.sk.com/transit/routes";
 
         const payload = {
-            "startX": "127.3604",
-            "startY": "36.3721",
-            "endX": "128.6285",
-            "endY": "35.8797",
+            "startX": startX,
+            "startY": startY,
+            "endX": endX,
+            "endY": endY,
             "lang": 0,
             "format": "json",
             "count": 10

@@ -5,7 +5,7 @@ module.exports = async function (context, req) {
     const date = "20231112";
     const time = "120000";
 
-    const call_command = `python ./ktx_schedule/ktx_api.py ${dep} ${arr} ${date} ${time}`;
+    const call_command = `python3 ./ktx_schedule/ktx_api.py ${dep} ${arr} ${date} ${time}`;
     // console.log(call_command);
 
     const execSync = require('child_process').execSync;
