@@ -31,6 +31,8 @@ module.exports = async function (context, req) {
 
             const totalFare = json_response.metaData.plan.itineraries[0].fare.regular.totalFare;
 
+            //코드 추가
+                
             context.res = {
                 status: 200,
                 body: { text: `Total Fare: ${totalFare} 원` },
