@@ -6,7 +6,7 @@ module.exports = async function (context, req) {
     const time = "120000";
 
     const call_command = `python ./ktx_schedule/ktx_api.py ${dep} ${arr} ${date} ${time}`;
-    console.log(call_command);
+    // console.log(call_command);
 
     const execSync = require('child_process').execSync;
     const resultBuffer = execSync(call_command, { encoding: 'utf-8' });
@@ -17,7 +17,7 @@ module.exports = async function (context, req) {
     var jsonData = ""
     try {
         jsonData = JSON.parse(result);
-        console.log(jsonData);
+        // console.log(jsonData);
     } catch (error) {
         console.error('JSON 파싱 오류:', error.message);
     }

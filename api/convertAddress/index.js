@@ -36,26 +36,27 @@ module.exports = async function (context, req) {
 };
 
 async function convertAddressToCoordinates(address) {
-    const apiUrl = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO`;
-    const apiKey = "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5";
+    const call_command = `python ./convertAddress/address2grid.py ${address}`;
+    // console.log(call_command);
 
-    const headers = {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "appKey": apiKey
-    };
+    const execSync = require('child_process').execSync;
+    const resultBuffer = execSync(call_command, { encoding: 'utf-8' });
+    const result = resultBuffer.toString();
 
+    var jsonData = ""
     try {
-        const response = await axios.get(apiUrl, { headers });
-
-        if (response.status !== 200) {
-            throw new Error(`TMap API request failed with status code ${response.status}`);
-        }
-
-        return response.data.convertAdd.newAddressList.newAddress[0];
+        jsonData = JSON.parse(result);
+        // console.log(jsonData);
     } catch (error) {
-        throw new Error(`Error converting address to coordinates: ${error.message}`);
+        console.error('JSON 파싱 오류:', error.message);
     }
+
+    context.res.json({
+        // status: 200, /* Defaults to 200 */
+        address: jsonData.address,
+        lon: jsonData.lon,
+        lan: jsonData.lan
+    });
 }
 
 async function getTransitFare(coordinates) {
