@@ -10,7 +10,7 @@
 
   <!-- kakaotalk message api -->
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-  <script type="text/javascript" src="../api/message/index.js"></script>
+  
 
   <style>
     body {
@@ -176,7 +176,7 @@
   <main>
     <h1>Vanilla JavaScript App</h1>
     <p>Loading content from the API: <b id="name">...</b></p>
-    <!-- <p>ktx schedule test: <b id="ktx_result"></b></p> -->
+    <p>ktx schedule test: <b id="ktx_result"></b></p>
 
     <label for="startX">출발지 입력</label>
     <input type="text" id="startX" name="startX" placeholder="출발지를 입력하세요.">
@@ -192,15 +192,17 @@
     <!-- <button onclick="callTMapAPI()">Convert Addresses</button>
     <button onclick="convertAddresses()">입력</button>
     
-    <!--test-->
+    <!- -test-->
     <!-- <p>출발지 좌표: <b id="resultStart">...</b></p>
     <p>도착지 좌표: <b id="resultEnd">...</b></p> -->
 
     <p>Findroad API: <b id="findroad">...</b></p>
 
-  <p><b id="result">...</b></p> -->
+
+  </main>
   </main>
 
+<!-- ktx 경로 긁어옴 [ 완료 ]
   <script>
     (async function () {
       const { res } = await (await fetch(`/api/ktx_schedule`)).json();
@@ -221,44 +223,64 @@
       document.querySelector('#ktx_result').textContent = res_text;
     }());
   </script>
+-->
 
-  <script>
-    async function convertAddresses() {
-      const startX = document.getElementById('startX').value;
-      const startY = document.getElementById('startY').value;
+<script>
+  async function convertAddresses() {
+    const startX = document.getElementById('startX').value;
+    const startY = document.getElementById('startY').value;
 
-      try {
-        const resultStart = await callTMapAPI(startX);
-        const resultEnd = await callTMapAPI(startY);
+    try {
+      const resultStart = await callTMapAPI(startX);
+      const resultEnd = await callTMapAPI(startY);
 
-        //test
-        // const resultStartElement = document.getElementById('resultStart');
-        // resultStartElement.innerHTML = `출발지 (위도: ${resultStart.latitude}, 경도: ${resultStart.longitude})`;
+      //test
+      // const resultStartElement = document.getElementById('resultStart');
+      // resultStartElement.innerHTML = `출발지 (위도: ${resultStart.latitude}, 경도: ${resultStart.longitude})`;
 
-        // const resultEndElement = document.getElementById('resultEnd');
-        // resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
+      // const resultEndElement = document.getElementById('resultEnd');
+      // resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
-        //변환된 좌표로 Tmap API 호출 및 결과 표시
-        const { text } = await (await fetch(`/api/findroad`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            startX: resultStart.longitude,
-            startY: resultStart.latitude,
-            endX: resultEnd.longitude,
-            endY: resultEnd.latitude,
-          }),
-        })).json();
+      //변환된 좌표로 Tmap API 호출 및 결과 표시
+      const { text } = await (await fetch(`/api/findroad`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          startX: resultStart.longitude,
+          startY: resultStart.latitude,
+          endX: resultEnd.longitude,
+          endY: resultEnd.latitude,
+        }),
+      })).json();
 
-        document.querySelector('#findroad').textContent = text;
-      } catch (error) {
-        console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
-      }
+      document.querySelector('#findroad').textContent = text;
+    } catch (error) {
+      console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
+    }
+  }
+
+
+  async function callTMapAPI(address) {
+    const url = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO&appKey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status code ${response.status}`);
     }
 
+    const responseData = await response.json();
 
+    const latitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLat;
+    const longitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLon;
+
+    return { latitude, longitude };
+  }
+</script>
+
+<script>
     async function callTMapAPI(address) {
       const url = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO&appKey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5`;
 
@@ -275,7 +297,7 @@
 
       return { latitude, longitude };
     }
-  </script>
+</script>
 
 
 

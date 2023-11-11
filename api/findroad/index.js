@@ -1,3 +1,6 @@
+const fetch = require("node-fetch");
+
+
 module.exports = async function (context, req) {
     try {
         const { startX, startY, endX, endY } = req.body; // 매개변수로부터 위도, 경도 정보를 받음
@@ -31,6 +34,8 @@ module.exports = async function (context, req) {
 
             const totalFare = json_response.metaData.plan.itineraries[0].fare.regular.totalFare;
 
+            //코드 추가
+                
             context.res = {
                 status: 200,
                 body: { text: `Total Fare: ${totalFare} 원` },
