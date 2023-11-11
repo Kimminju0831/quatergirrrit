@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -186,7 +188,8 @@
     <label for="startY">도착지 입력</label>
     <input type="text" id="startY" name="startY" placeholder="도착지를 입력하세요.">
 
-    <button onclick="callTMapAPI()">Convert Addresses</button>
+
+    <button onclick="convertAddresses()">Convert Addresses</button>
 
     <p>출발지 좌표: <b id="resultStart">...</b></p>
     <p>도착지 좌표: <b id="resultEnd">...</b></p>
@@ -196,15 +199,15 @@
   </main>
 
   <script>
-    (async function() {
-      const { res } = await( await fetch(`/api/ktx_schedule`)).json();
-      
+    (async function () {
+      const { res } = await (await fetch(`/api/ktx_schedule`)).json();
+
       var res_text = "\n";
-      
+
       for (const s in res) {
         console.log(`${s}`)
         var one_res = ""
-        
+
         for (const item in res[s]) {
           one_res += `${item} : ${res[s][item]}, `;
         }
@@ -216,32 +219,40 @@
     }());
   </script>
 
-  <!-- <script>
-    (async function () {
-      const { text } = await (await fetch(`/api/findroad`)).json();
-      document.querySelector('#findroad').textContent = text;
-    }());
-  </script> -->
-
-
   <script>
-    async function callTMapAPI() {
+    async function convertAddresses() {
       const startX = document.getElementById('startX').value;
       const startY = document.getElementById('startY').value;
 
-      const urlX = `/api/convertAddress?address=${encodeURIComponent(startX)}`;
-      const responseX = await fetch(urlX);
-      const dataX = await responseX.json();
+      try {
+        const resultStart = await callTMapAPI(startX);
+        const resultEnd = await callTMapAPI(startY);
 
-      const urlY = `/api/convertAddress?address=${encodeURIComponent(startY)}`;
-      const responseY = await fetch(urlY);
-      const dataY = await responseY.json();
+        const resultStartElement = document.getElementById('resultStart');
+        resultStartElement.innerHTML = `출발지 (위도: ${resultStart.latitude}, 경도: ${resultStart.longitude})`;
 
-      const resultStartElement = document.getElementById('resultStart');
-      resultStartElement.innerHTML = `${startX} (위도: ${dataX.latitude}, 경도: ${dataX.longitude})`;
+        const resultEndElement = document.getElementById('resultEnd');
+        resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
+      } catch (error) {
+        console.error('Failed to convert addresses:', error);
+      }
+    }
 
-      const resultEndElement = document.getElementById('resultEnd');
-      resultEndElement.innerHTML = `${startY} (위도: ${dataY.latitude}, 경도: ${dataY.longitude})`;
+    async function callTMapAPI(address) {
+      const url = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO&appKey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5`;
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status code ${response.status}`);
+      }
+
+      const responseData = await response.json();
+
+      const latitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLat;
+      const longitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLon;
+
+      return { latitude, longitude };
     }
   </script>
 
@@ -267,3 +278,5 @@
         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" /></a>
   </div>
 </body>
+
+</html>

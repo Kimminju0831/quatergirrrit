@@ -1,9 +1,16 @@
+// index.js
+
 const axios = require('axios');
 
 module.exports = async function (context, req) {
     try {
+        const address = req.query.address;
+        if (!address) {
+            throw new Error("Address is required.");
+        }
+
         // Convert address to coordinates using TMap API
-        const coordinates = await convertAddressToCoordinates(req.query.address);
+        const coordinates = await convertAddressToCoordinates(address);
 
         // Call Transit API with coordinates
         const totalFare = await getTransitFare(coordinates);
@@ -20,7 +27,7 @@ module.exports = async function (context, req) {
 
         context.res = {
             status: 500,
-            body: { error: "Internal Server Error" },
+            body: { error: error.message },
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -28,35 +35,11 @@ module.exports = async function (context, req) {
     }
 };
 
-async function convertAddressToCoordinates(address) {
-    const call_command = `python ./convertAddress/address2grid.py ${address}`;
-    // console.log(call_command);
-
-    const execSync = require('child_process').execSync;
-    const resultBuffer = execSync(call_command, { encoding: 'utf-8' });
-    const result = resultBuffer.toString();
-
-    var jsonData = ""
-    try {
-        jsonData = JSON.parse(result);
-        // console.log(jsonData);
-    } catch (error) {
-        console.error('JSON 파싱 오류:', error.message);
-    }
-
-    context.res.json({
-        // status: 200, /* Defaults to 200 */
-        address: jsonData.address,
-        lon: jsonData.lon,
-        lan: jsonData.lan
-    });
-}
-
 async function getTransitFare(coordinates) {
     const apiUrl = "https://apis.openapi.sk.com/transit/routes";
     const payload = {
-        "startX": coordinates.longitude,
-        "startY": coordinates.latitude,
+        "startX": coordinates.newLon,
+        "startY": coordinates.newLat,
         "endX": "128.6285",
         "endY": "35.8797",
         "lang": 0,
@@ -64,18 +47,24 @@ async function getTransitFare(coordinates) {
         "count": 10
     };
 
+    const apiKey = "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5";
+
     const headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "appKey": "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5"
+        "appKey": apiKey
     };
 
-    const response = await axios.post(apiUrl, payload, { headers });
+    try {
+        const response = await axios.post(apiUrl, payload, { headers });
 
-    if (response.status === 200) {
-        const totalFare = response.data.metaData.plan.itineraries[0].fare.regular.totalFare;
-        return totalFare;
-    } else {
-        throw new Error(`API request failed with status code ${response.status}`);
+        if (response.status === 200) {
+            const totalFare = response.data.metaData.plan.itineraries[0].fare.regular.totalFare;
+            return totalFare;
+        } else {
+            throw new Error(`API request failed with status code ${response.status}`);
+        }
+    } catch (error) {
+        throw new Error(`Error getting transit fare: ${error.message}`);
     }
 }
