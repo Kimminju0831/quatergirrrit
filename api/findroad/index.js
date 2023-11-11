@@ -1,3 +1,6 @@
+const fetch = require("node-fetch");
+
+
 module.exports = async function (context, req) {
     try {
         const { startX, startY, endX, endY } = req.body; // 매개변수로부터 위도, 경도 정보를 받음
