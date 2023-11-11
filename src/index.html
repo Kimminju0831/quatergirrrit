@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -206,15 +208,15 @@
   </script>
 
   <script>
-    (async function() {
-      const { res } = await( await fetch(`/api/ktx_schedule`)).json();
-      
+    (async function () {
+      const { res } = await (await fetch(`/api/ktx_schedule`)).json();
+
       var res_text = "\n";
-      
+
       for (const s in res) {
         console.log(`${s}`)
         var one_res = ""
-        
+
         for (const item in res[s]) {
           one_res += `${item} : ${res[s][item]}, `;
         }
@@ -248,10 +250,10 @@
       const dataY = await responseY.json();
 
       const resultStartElement = document.getElementById('resultStart');
-      resultStartElement.innerHTML = `${startX} (위도: ${dataX.latitude}, 경도: ${dataX.longitude})`;
+      resultStartElement.innerHTML = `${startX} (위도: ${dataX.newLat}, 경도: ${dataX.newLon})`;
 
       const resultEndElement = document.getElementById('resultEnd');
-      resultEndElement.innerHTML = `${startY} (위도: ${dataY.latitude}, 경도: ${dataY.longitude})`;
+      resultEndElement.innerHTML = `${startY} (위도: ${dataY.newLat}, 경도: ${dataY.newLon})`;
     }
   </script>
 
@@ -277,3 +279,4 @@
         src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" /></a>
   </div>
 </body>
+</html>
