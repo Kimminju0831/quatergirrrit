@@ -130,9 +130,9 @@
 
 # 🔧Tech
 <h3>✦ 개발 환경</h3>
-OS: Windows / Mac OS<br/>
-Python >= 3.10<br/>
-Node >= v16.xx.xx<br/>
+- OS: Windows / Mac OS<br/>
+- Python: Python >= 3.10<br/>
+- Node: Node >= v16.xx.xx<br/>
 <br/>
 <h3>✦ 설치 및 실행 방법</h3>
 
