@@ -1,5 +1,10 @@
 @charset "utf-8"; 
 
+  .visual-bg {
+    filter: brightness(60%); /*작아질수록 더 어두움*/
+  }
+
+
 /* opilsol-N1 [qvLOs5jZ8n] */
 .opilsol-N1 { z-index: 5000; position: fixed; width: 100%; height: 8rem; }
 .opilsol-N1::after { content: ""; position: absolute; top: 0; left: 0; height: 100%; width: 100%; transition: 0.4s; background: linear-gradient(rgba(var(--black-rgb), 0.5), rgba(0, 255, 0, 0)); }
@@ -159,9 +164,9 @@
 }
 
 /* opilsol-N5 [EglOs5jZAa] */
-.opilsol-N5 { margin-bottom: 5rem; }
+.opilsol-N5 { margin-bottom: 0rem; }
 .opilsol-N5>.content-container { overflow: hidden; position: relative; padding: 8rem 0 13rem 8rem; width: 100%; }
-.opilsol-N5>.content-container::after { position: absolute; left: 0; bottom: 0; content: ""; width: 100%; height: 46.4rem; background-color: var(--con-bg-gray); }
+.opilsol-N5>.content-container::after { position: absolute; left: 0; bottom: 0; content: ""; width: 100%; height: 36.4rem; background-color: var(--con-bg-gray); }
 .opilsol-N5 .textset { padding: 2rem 0; }
 .opilsol-N5 .textset .textset-tit { line-height: var(--lh-h1); font-size: var(--fs-h1); font-family: var(--ff-po); letter-spacing: -0.1rem; }
 .opilsol-N5 .textset .textset-tit+.textset-desc { margin-top: 1.6rem; line-height: var(--lh-h6); font-weight: 500; color: var(--text-color2); }
