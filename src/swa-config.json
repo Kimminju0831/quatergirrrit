@@ -1,0 +1,19 @@
+{
+    "routes": [
+      {
+        "route": "/api",
+        "serve": "/api",
+        "force404": false
+      },
+      {
+        "route": "/",
+        "rewrite": "/index.html",
+        "force404": false
+      }
+    ],
+    "staticWebApps": {
+      "apiLocation": "http://localhost:7071", 
+      "appLocation": "http://localhost:4300"
+    }
+  }
+  
