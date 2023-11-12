@@ -47,7 +47,7 @@ async function getTransitFare(coordinates) {
         "count": 10
     };
 
-    const apiKey = "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5";
+    const apiKey = "hTKivjDzuF5NFMpbPLckQa8cv8ZJyHxi6D7KSHcL";
 
     const headers = {
         "accept": "application/json",
