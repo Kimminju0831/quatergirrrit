@@ -1,5 +1,5 @@
 module.exports = async function (context, req) {
-
+    
     const dep = "동대구";
     const arr = "서울";
     const date = "20231112";
@@ -26,4 +26,4 @@ module.exports = async function (context, req) {
         // status: 200, /* Defaults to 200 */
         res: jsonData
     });
-}
+}                       
