@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 module.exports = async function (context, req) {
 
     const dep = "동대구";
