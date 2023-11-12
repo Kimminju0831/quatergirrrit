@@ -151,9 +151,9 @@ Node >= v16.xx.xx<br/>
 
 
 <h3>✦ 주의사항</h3>
-1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.
+1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.<br/>
+2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨.<br/>
 
-2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨.
 
 - Windows
     
