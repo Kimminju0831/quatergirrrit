@@ -84,7 +84,7 @@ h11==0.14.0
 h5py==3.9.0
 httplib2==0.22.0
 huggingface-hub==0.16.4
-idna==3.4
+idna==2.10
 imageio==2.31.1
 importlib-metadata==6.5.1
 importlib-resources==5.12.0

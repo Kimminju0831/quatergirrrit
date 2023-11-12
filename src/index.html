@@ -239,21 +239,21 @@
         const resultEndElement = document.getElementById('resultEnd');
         resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
-        // 변환된 좌표로 Tmap API 호출 및 결과 표시
-        const { text } = await (
-          await fetch(`/api/findroad`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              startX: resultStart.longitude,
-              startY: resultStart.latitude,
-              endX: resultEnd.longitude,
-              endY: resultEnd.latitude,
-            }),
-          })
-        ).json();
+        // // 변환된 좌표로 Tmap API 호출 및 결과 표시
+        // const { text } = await (
+        //   await fetch(`/api/findroad`, {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //       startX: resultStart.longitude,
+        //       startY: resultStart.latitude,
+        //       endX: resultEnd.longitude,
+        //       endY: resultEnd.latitude,
+        //     }),
+        //   })
+        // ).json();
 
         try {
           const response = await fetch(`/api/findroad`, {
