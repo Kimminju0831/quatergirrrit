@@ -206,6 +206,7 @@
 
 
   <script>
+    /*
     (async function () {
       const { res } = await (await fetch(`/api/ktx_schedule`)).json();
 
@@ -224,6 +225,7 @@
 
       document.querySelector('#ktx_result').textContent = res_text;
     }());
+    */
   </script>
 
 
@@ -259,7 +261,10 @@
         })
       ).json();
 
+      // 문제의 구간
+      console.log(typeof text);
       document.querySelector('#findroad').textContent = text;
+
     } catch (error) {
       console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
     }

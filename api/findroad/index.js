@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 
-
 module.exports = async function (context, req) {
     try {
         const { startX, startY, endX, endY } = req.body; // 매개변수로부터 위도, 경도 정보를 받음
@@ -30,19 +29,51 @@ module.exports = async function (context, req) {
 
         if (response.ok) {
             const json_response = await response.json();
-            console.log(JSON.stringify(json_response, null, 2));
+            // console.log(JSON.stringify(json_response, null, 2));
 
-            const totalFare = json_response.metaData.plan.itineraries[0].fare.regular.totalFare;
+            let itineraryText = '';
+            var text_counter = 0;
 
-            //코드 추가
-                
+            for (const itinerary of json_response['metaData']["plan"]["itineraries"]) {
+                const legs = itinerary.legs || [];
+            
+                for (const leg of legs) {
+                    if ("Lane" in leg) {
+                        const lanes = leg["Lane"];
+            
+                        // console.log("Lanes:", lanes);
+                        
+                        for (let i = 0; i < lanes.length; i++) {
+                            const route = lanes[i].route || `No route information for Lane ${i}`;
+                            if (route.startsWith('KTX')) {
+                                const departure_station = leg["start"]["name"];
+                                const arrival_station = leg["end"]["name"];
+            
+                                console.log(`야삐 Departure Station: ${departure_station}`);
+                                console.log(`야삐 Arrival Station: ${arrival_station}`);
+                                // console.log(`야삐 Route: ${route}`);
+                                if (text_counter == 0) {
+                                    itineraryText += `{"dep": "${departure_station}",`;
+                                    itineraryText += `"arr": "${arrival_station}"}`;
+                                    // itineraryText += `"Route": '${route}',}`;
+                                    
+                                    text_counter += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(itineraryText)
+            // context.res.body = JSON.parse(itineraryText);
+            
             context.res = {
                 status: 200,
-                body: { text: `Total Fare: ${totalFare} 원` },
+                body: JSON.parse(itineraryText),  // 직접 context.res.body에 itineraryText를 넣어줌
                 headers: {
-                    'Content-Type': 'application/json'
+                  'Content-Type': 'application/json'
                 }
-            };
+              };
         } else {
             console.error(`API request failed with status code ${response.status}`);
             console.error(await response.text());

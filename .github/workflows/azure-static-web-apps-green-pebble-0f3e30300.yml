@@ -29,7 +29,7 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/src" # App source code path
-          api_location: "" # Api source code path - optional
+          api_location: "/api" # Api source code path - optional
           output_location: "/src" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
       - name: Install Python dependencies
@@ -37,6 +37,7 @@ jobs:
              pip install -r requirements.txt
       - name: Install node-fetch
         run: npm install node-fetch
+             npm run build --if-present
                  
       
   close_pull_request_job:
