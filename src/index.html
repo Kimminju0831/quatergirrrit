@@ -282,27 +282,6 @@
 </script>
 
   <script>
-    async function callTMapAPI(address) {
-      const url = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO&appKey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5`;
-
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`API request failed with status code ${response.status}`);
-      }
-
-      const responseData = await response.json();
-
-      const latitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLat;
-      const longitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLon;
-
-      return { latitude, longitude };
-    }
-  </script>
-
-
-
-  <script>
     Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
 
     function sendLink() { // 카카오톡 공유하기
