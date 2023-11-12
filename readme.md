@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Smart%20Us&fontSize=90&animation=fadeIn&fontAlignY=38&desc=Together%20Smart%20Team%20HYME!&descAlignY=51&descAlign=62)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Smart%20Us&fontSize=90&animation=fadeIn&fontAlignY=38&desc=Together%20Smart%20Team%20QuarterGirit!&descAlignY=51&descAlign=62)
 
 # 🌟 Product Link 
 
@@ -18,7 +18,7 @@
 
 
 # 📚 Theme
-<p>🌟 특별 세션 - 스마트 기술 교육 부재</p>
+<p>[S타입] 디지털 취약 계층을 위한 One-stop 기차 예약 / 안내 서비스</p>
 
 <br>
 </br>
@@ -184,9 +184,9 @@
 <br/>
 <h2> 🔧 Team Member - 컴퓨터학부 20학번 김영효 </h2>
 <br/>
-<h2> 🏆 Team Member - 컴퓨터학부 20학번 김현지 </h2>
+<h2> 🏆 Team Member - 컴퓨터학부 20학번 이은지 </h2>
 <br/>
-<h2> 🥰 Team Member - 컴퓨터학부 20학번 이은지 </h2>
+<h2> 🥰 Team Member - 컴퓨터학부 20학번 최희정 </h2>
 <br/>
 
 
