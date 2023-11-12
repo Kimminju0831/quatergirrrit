@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-pip install requests
-"""
-
 import os
 import requests
 import openai
@@ -14,6 +10,8 @@ import json
 def create_script(departure, arrival, date, time):
 
     CONTENT = departure + "에서 " + arrival + "으로 " + date + " " + time + "에 가는 기차 승차권을 예매하는 말을 1줄로 해줘" 
+
+    openai.api_key = "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"
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -28,12 +26,12 @@ def create_script(departure, arrival, date, time):
     result = "안녕하세요, 원콜 서비스를 이용하려 합니다. "
     result += response['choices'][0]['message']['content']
 
-   #  print(result)
+    #print(result)
 
     result_json = json.dumps({"result": result})
 
-    # print(result_json)
-    return result_json
+    print(result_json)
+    #return result_json
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding='utf-8')
