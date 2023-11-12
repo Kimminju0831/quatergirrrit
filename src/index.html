@@ -258,7 +258,9 @@
           }),
         })
       ).json();
-      console.log(text.body);
+
+      // 문제의 구간
+      console.log(typeof text);
       document.querySelector('#findroad').textContent = text;
 
     } catch (error) {
