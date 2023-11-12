@@ -37,6 +37,7 @@ jobs:
              pip install -r requirements.txt
       - name: Install node-fetch
         run: npm install node-fetch
+             npm run build --if-present
                  
       
   close_pull_request_job:
