@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Smart%20Us&fontSize=90&animation=fadeIn&fontAlignY=38&desc=Together%20Smart%20Team%20QuarterGirit!&descAlignY=51&descAlign=62)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=다%20행&fontSize=90&animation=fadeIn&fontAlignY=38&desc=다같이%20행복한%20기차예매%20Team%20QuarterGirit!&descAlignY=51&descAlign=62)
 
 # 🌟 Product Link 
 
