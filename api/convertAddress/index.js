@@ -1,5 +1,3 @@
-// index.js
-
 const axios = require('axios');
 
 module.exports = async function (context, req) {
@@ -52,7 +50,7 @@ async function getTransitFare(coordinates) {
     const headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "appKey": apiKey
+        "appKey": apiKey,
     };
 
     try {

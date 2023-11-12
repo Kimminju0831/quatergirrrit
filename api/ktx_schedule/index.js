@@ -1,7 +1,5 @@
-const axios = require('axios');
-
 module.exports = async function (context, req) {
-
+    console.log('호출됨');
     const dep = "동대구";
     const arr = "서울";
     const date = "20231112";
@@ -19,7 +17,7 @@ module.exports = async function (context, req) {
     var jsonData = ""
     try {
         jsonData = JSON.parse(result);
-        // console.log(jsonData);
+        console.log(jsonData);
     } catch (error) {
         console.error('JSON 파싱 오류:', error.message);
     }
