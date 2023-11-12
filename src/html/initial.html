@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../resources/css/template.css">
   <link rel="stylesheet" href="../resources/css/common.css">
   <link rel="stylesheet" href="../resources/css/style.css">
-
+ 
+  <!-- kakaotalk message api -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 
 <body>
@@ -53,7 +55,7 @@
                 <a class="header-sublink" href="javascript:void(0)">
                   <span>다행</span>
                 </a>
-             
+
             </ul>
           </li>
           <li class="header-gnbitem">
@@ -66,10 +68,10 @@
                   <span>QuarterGirit</span>
                 </a>
               </li>
-           
+
             </ul>
           </li>
-        
+
       </div>
       <div class="header-right">
         <div class="header-utils">
@@ -118,7 +120,7 @@
                   <span>다행</span>
                 </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="fullmenu-gnbitem">
@@ -131,10 +133,10 @@
                   <span>QuarterGirit</span>
                 </a>
               </li>
-             
+
             </ul>
           </li>
-         
+
         </ul>
       </div>
       <button class="fullmenu-close">
@@ -248,17 +250,17 @@
     </div>
     <!-- [E]opilsol-N4 -->
     <div class="opilsol-N5" data-bid="EglOs5jZAa">
-      <div class="content-container">
+      <div class="content-container" >
         <div class="container-md">
           <div class="textset">
             <h2 class="textset-tit">" 다행 "</h2>
-            <p class="textset-desc h5">다함께 행복한 KTX 예매 문화를 만들어가요!<br>당신과 함께라 정말 다행입니다. </p>
+            <p class="textset-desc h5" style="height: 50px;">다함께 행복한 KTX 예매 문화를 만들어가요!<br>당신과 함께라 정말 다행입니다. </p>
           </div>
         </div>
-        <div class="container-md">
-          <div class="slide-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
+        <div class="container-md" style="height: 200px;">
+          <div class="slide-container"style="height: 200px;">
+            <div class="swiper-wrapper"style="height: 200px;">
+              <div class="swiper-slide"style="height: 200px;">
                 <a class="cardset cardset-border" href="javascript:void(0);">
                   <!-- <figure class="cardset-figure">
                     <img class="cardset-img" src="../resources/images/map.png" alt="이미지">
@@ -270,7 +272,7 @@
                   </div>
                 </a>
               </div>
-              <div class="swiper-slide">
+              <div class="swiper-slide" style="height: 200px;">
                 <a class="cardset cardset-border" href="javascript:void(0);">
                   <!-- <figure class="cardset-figure">
                     <img class="cardset-img" src="../resources/images/time.png" alt="이미지">
@@ -282,7 +284,7 @@
                   </div>
                 </a>
               </div>
-              <div class="swiper-slide">
+              <div class="swiper-slide" style="height: 200px;">
                 <a class="cardset cardset-border" href="javascript:void(0);">
                   <!-- <figure class="cardset-figure">
                     <img class="cardset-img" src="../resources/images/train.png" alt="이미지">
@@ -294,7 +296,7 @@
                   </div>
                 </a>
               </div>
-              <div class="swiper-slide">
+              <div class="swiper-slide" style="height: 200px;">
                 <a class="cardset cardset-border" href="javascript:void(0);">
                   <!-- <figure class="cardset-figure">
                     <img class="cardset-img" src="../resources/images/doc.png" alt="이미지">
@@ -306,7 +308,7 @@
                   </div>
                 </a>
               </div>
-              <div class="swiper-slide">
+              <div class="swiper-slide" style="height: 200px;">
                 <a class="cardset cardset-border" href="javascript:void(0);">
                   <!-- <figure class="cardset-figure">
                     <img class="cardset-img" src="../resources/images/success.png" alt="이미지">
@@ -374,13 +376,17 @@
 
       <label for="startY">도착지 입력</label>
       <input type="text" id="startY" name="startY" placeholder="도착지를 입력하세요.">
+<br><br>
+      <label for="startDateTime">출발날짜 및 시간 (ex.202311122121)</label>
+      <input type="text" id="startDateTime" name="startDateTime" placeholder="출발날짜와 시간을 입력하세요.">
 
 
       <button onclick="convertAddresses()">Convert Addresses</button>
       <p>출발지 좌표: <b id="resultStart">...</b></p>
       <p>도착지 좌표: <b id="resultEnd">...</b></p>
       <p>Script: <b id="script">...</b></p>
-
+      <p>출발역: <b id="findroad1">...</b></p>
+      <p>도착역: <b id="findroad2">...</b></p>
       <br><br>
       <h1>탑승 가능한 열차 목록</h1>
       <br>
@@ -429,7 +435,7 @@
       </table>
 
 
-      <br> 
+      <br>
       <h1>카카오톡으로 받기</h1><br>
 
       <div>
@@ -759,7 +765,7 @@
 </body>
 
 
-
+<!-- 
 
 <script>
   (async function () {
@@ -780,13 +786,14 @@
 
     document.querySelector('#ktx_result').textContent = res_text;
   }());
-</script>
+</script> -->
 
 
 <script>
   async function convertAddresses() {
     const startX = document.getElementById('startX').value;
     const startY = document.getElementById('startY').value;
+    const startDateTime = document.getElementById('startDateTime').value;
 
     try {
       const resultStart = await callTMapAPI(startX);
@@ -800,22 +807,107 @@
       resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
       // 변환된 좌표로 Tmap API 호출 및 결과 표시
-      const { text } = await (
-        await fetch(`/api/findroad`, {
+      // const response = await fetch(url, {
+      //       method: 'POST',
+      //       headers: headers,
+      //       body: JSON.stringify(payload)
+      //   });
+      const fullResponse = await (
+        await fetch("https://apis.openapi.sk.com/transit/routes", {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            "accept": "application/json",
+            "content-type": "application/json",
+            "appKey": "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5"
           },
           body: JSON.stringify({
             startX: resultStart.longitude,
             startY: resultStart.latitude,
             endX: resultEnd.longitude,
             endY: resultEnd.latitude,
+            searchDttm: startDateTime,
           }),
         })
-      ).json();
+      ).text();
 
-      document.querySelector('#findroad').textContent = text;
+      // console.log('Server Response:', fullResponse);
+
+      try {
+        const parsedResponse = JSON.parse(fullResponse);
+        // document.querySelector('#findroad').textContent =  parsedResponse['metaData']["plan"]["itineraries"][0]['legs'][1]["end"]["name"]; //여기여기!!!
+
+        // console.log("dididididididi",  parsedResponse['metaData']["plan"]["itineraries"][0]['legs']);
+        const itineraries = parsedResponse['metaData']["plan"]["itineraries"];
+
+        if (itineraries.length > 0) {
+          const legs = itineraries[0]['legs'];
+          var endName = "";
+          var startName = "";
+
+          for (const leg of legs) {
+
+            if (leg['mode'] === 'TRAIN') {
+              endName = leg['passStopList']['stationList'][0]['stationName'];
+              startName = leg['passStopList']['stationList'][1]['stationName'];
+              console.log('End Name with routeColor for TRAIN:', endName);
+              console.log('Start Name with routeColor for TRAIN:', startName);
+              document.querySelector('#findroad1').textContent =  endName;//여기여기!!!
+              document.querySelector('#findroad2').textContent =  startName;//여기여기!!!
+            }
+          }
+
+          const dep = endName;
+          const arr = startName;
+          const date = startDateTime.toString().substr(0, 8);
+          const time = startDateTime.toString().substr(8, 14);
+
+          const schedule = await (
+            await fetch(`/api/ktx_schedule`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                "dep": dep,
+                "arr": arr,
+                "date": date,
+                "time": time,
+              }),
+            })
+          ).json();
+          // console.log(schedule)
+
+          var schedule_count = 0;
+          for (const s in schedule) {
+            // console.log(`${s}, ${Object.keys(schedule[s]).length}`)
+            schedule_count = Object.keys(schedule[s]).length;
+            var one_res = ""
+
+            for (const item in schedule[s]) {
+              var len = Object.keys(schedule[s][item]).length;
+              // console.log(`${len}`);
+              for (const val in schedule[s][item]) {
+                one_res += `${val} : ${schedule[s][item][val]}, `;
+                /* 반복문 기준으로 
+                    요금, 출발역, 출발 시간, 도착역, 도착 시간, 열차 종류, 열차 번호 순으로 나옴 
+                    charge, departure, deptime, arrival, arrtime, trainname, trainno
+                    이거 동적으로 넣는 코드만 작성하면 됨
+                */
+              }
+            }
+            console.log(one_res);
+          }
+          console.log(schedule_count);
+        }
+
+
+      } catch (error) {
+        // 서버 응답이 JSON 형식이 아닌 경우 또는 파싱에 실패한 경우
+        document.querySelector('#findroad').textContent = 'Failed to parse JSON. Displaying raw response: ' + fullResponse;
+        console.log("=====full response: ", fullResponse);
+      }
+
+
     } catch (error) {
       console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
     }
@@ -860,23 +952,38 @@
       // 서버에서 받아온 텍스트 데이터를 script 엘리먼트에 설정
       document.querySelector('#script').textContent = text;
   
-      Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화 (한 번만 초기화 필요)
-  
-      function sendLink() { // 카카오톡 공유하기
-        Kakao.Link.sendDefault({
-          objectType: 'text',
-          text: text, // 서버에서 받아온 텍스트를 사용
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-            webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-          },
-        });
-      }
+      //Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화 (한 번만 초기화 필요)
+  //
+      //function sendLink() { // 카카오톡 공유하기
+      //  Kakao.Link.sendDefault({
+      //    objectType: 'text',
+      //    text: text, // 서버에서 받아온 텍스트를 사용
+      //    link: {
+      //      mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+      //      webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+      //    },
+      //  });
+      //}
   
     } catch (error) {
       // 오류 처리
       console.error('Error submitting form:', error);
     }
+  }
+</script>
+
+<script type="text/javascript">
+  Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
+
+  function sendLink() { // 카카오톡 공유하기
+    Kakao.Link.sendDefault({
+      objectType: 'text',
+      text: '안녕하세요, 원콜 서비스를 이용하려 합니다. 물금역에서 대전역으로 12월 11일 오후 12시 23분에 출발하는 기차 승차권 3매를 예매하고 싶어요. 제 이름은 홍길동입니다.',
+      link: {
+        mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+        webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+      },
+    })
   }
 // 예시 호출
 // submitRowAsync('departureValue', 'arrivalValue', 'dateValue', 'timeValue');
