@@ -855,14 +855,15 @@
           for (const s in schedule) {
             // console.log(`${s}, ${Object.keys(schedule[s]).length}`)
             schedule_count = Object.keys(schedule[s]).length;
-            var one_res = "<tr>"
+            var one_res = "<tr>";
+            var dep_date_time = schedule[s].deptime;
             for (const item in schedule[s]) {
               var len = Object.keys(schedule[s][item]).length;
               // console.log(`${len}`);
               one_res += `<td>${schedule[s][item]}</td>`;
               // console.log(one_res)
             }
-            one_res += `<td> <button class="voicecheck" onclick="submitRowAsync('${dep}', '${arr}', '${date}', '${time}')">시나리오 확인</button></td>`
+            one_res += `<td> <button class="voicecheck" onclick="submitRowAsync('${dep}', '${arr}', '${ dep_date_time}')">시나리오 확인</button></td>`
             one_res += "</tr>"
             res_str += one_res
           }
