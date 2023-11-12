@@ -374,6 +374,9 @@
 
       <label for="startY">도착지 입력</label>
       <input type="text" id="startY" name="startY" placeholder="도착지를 입력하세요.">
+<br><br>
+      <label for="startDateTime">출발날짜 및 시간 (ex.202311122121)</label>
+      <input type="text" id="startDateTime" name="startDateTime" placeholder="출발날짜와 시간을 입력하세요.">
 
 
       <button onclick="convertAddresses()">Convert Addresses</button>
@@ -786,6 +789,7 @@
   async function convertAddresses() {
     const startX = document.getElementById('startX').value;
     const startY = document.getElementById('startY').value;
+    const startDateTime = document.getElementById('startDateTime').value;
 
     try {
       const resultStart = await callTMapAPI(startX);
@@ -817,6 +821,7 @@
             startY: resultStart.latitude,
             endX: resultEnd.longitude,
             endY: resultEnd.latitude,
+            searchDttm: startDateTime,
           }),
         })
       ).text();
