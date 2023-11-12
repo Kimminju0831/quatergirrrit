@@ -129,12 +129,12 @@
 이것이 더는 익숙한 풍경이 아니기를 바랍니다.<br/><br/><br/></p>
 
 # 🔧Tech
-<h3>✦ 개발 환경</h3><br/>
+<h3>✦ 개발 환경</h3>
 OS: Windows / Mac OS<br/>
 Python >= 3.10<br/>
 Node >= v16.xx.xx<br/>
 <br/>
-<h3>✦ 설치 및 실행 방법</h3><br/>
+<h3>✦ 설치 및 실행 방법</h3>
 
     // Azure static web app 설치
     npm install -g @azure/static-web-apps-cli
@@ -148,8 +148,9 @@ Node >= v16.xx.xx<br/>
 
     // 실행
     swa start src --api-location api
-
-<h3>✦ 주의사항</h3><br/>
+    
+<br/>
+<h3>✦ 주의사항</h3>
 1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.<br/><br/>
 2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨.<br/>
 
