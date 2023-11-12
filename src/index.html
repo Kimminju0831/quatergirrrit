@@ -205,7 +205,7 @@
 
   <script>
     (async function () {
-      const { res } = await (await fetch(`/api/ktx_schedule`)).json();
+      const { res } = await (await fetch('https://quatergirit-api.azurewebsites.net/api/ktx_schedule')).json();
 
       var res_text = "\n";
 
@@ -243,7 +243,7 @@
 
       // 변환된 좌표로 Tmap API 호출 및 결과 표시
       const { text } = await (
-        await fetch(`/api/findroad`, {
+        await fetch('https://quatergirit-api.azurewebsites.net/api/findroad', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
