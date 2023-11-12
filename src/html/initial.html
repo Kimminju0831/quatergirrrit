@@ -379,6 +379,7 @@
       <button onclick="convertAddresses()">Convert Addresses</button>
       <p>출발지 좌표: <b id="resultStart">...</b></p>
       <p>도착지 좌표: <b id="resultEnd">...</b></p>
+      <p>Script: <b id="script">...</b></p>
 
       <br><br>
       <h1>탑승 가능한 열차 목록</h1>
@@ -400,7 +401,7 @@
             <td>Matman</td>
             <td>(713) 123-8965</td>
             <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRow()">음성 확인</button>
+            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button>
             </td>
           </tr>
           <tr>
@@ -408,21 +409,21 @@
             <td>Smith</td>
             <td>(713) 584-9614</td>
             <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRow()">음성 확인</button></td>
+            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
           </tr>
           <tr>
             <td>Susan</td>
             <td>Johnson</td>
             <td>(713) 847-1124</td>
             <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRow()">음성 확인</button></td>
+            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
           </tr>
           <tr>
             <td>Tracy</td>
             <td>Richardson</td>
             <td>(713) 245-4821</td>
             <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRow()">음성 확인</button></td>
+            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
           </tr>
         </tbody>
       </table>
@@ -747,6 +748,7 @@
         </div>
       </div>
     </div>
+
   </footer>
   <!-- [E]opilsol-N3 -->
   <script src="../resources/js/setting.js"></script>
@@ -838,54 +840,45 @@
 </script>
 
 <script>
-  Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
-
-  function sendLink() { // 카카오톡 공유하기
-    Kakao.Link.sendDefault({
-      objectType: 'text',
-      text: '안녕하세요, 원콜 서비스를 이용하려 합니다. 물금역에서 대전역으로 12월 11일 오후 12시 23분에 출발하는 기차 승차권 3매를 예매하고 싶어요. 제 이름은 홍길동입니다.',
-      link: {
-        mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-        webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-      },
-    })
+  async function submitRowAsync(dep, arr, date, time) {
+    try {
+      const { text } = await (
+        await fetch(`/api/onecall_script`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            dep: dep,
+            arr: arr,
+            date: date,
+            time: time,
+          }),
+        })
+      ).text();
+  
+      // 서버에서 받아온 텍스트 데이터를 script 엘리먼트에 설정
+      document.querySelector('#script').textContent = text;
+  
+      Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화 (한 번만 초기화 필요)
+  
+      function sendLink() { // 카카오톡 공유하기
+        Kakao.Link.sendDefault({
+          objectType: 'text',
+          text: text, // 서버에서 받아온 텍스트를 사용
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+            webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+          },
+        });
+      }
+  
+    } catch (error) {
+      // 오류 처리
+      console.error('Error submitting form:', error);
+    }
   }
-</script>
+// 예시 호출
+// submitRowAsync('departureValue', 'arrivalValue', 'dateValue', 'timeValue');
 
-<script>
-  function submitRow(dep, arr, date, time) {
-    // 폼 요소를 동적으로 생성
-    var form = document.createElement('form');
-    form.method = 'post';
-    form.action = '/api/onecall_script';
-
-    // hidden input 요소를 동적으로 생성하여 값을 폼에 추가
-    var depInput = document.createElement('input');
-    depInput.type = 'hidden';
-    depInput.name = 'dep';
-    depInput.value = dep;
-    form.appendChild(nameInput);
-
-    var arrInput = document.createElement('input');
-    arrInput.type = 'hidden';
-    arrInput.name = 'arr';
-    arrInput.value = arr;
-    form.appendChild(arrInput);
-
-    var dateInput = document.createElement('input');
-    dateInput.type = 'hidden';
-    dateInput.name = 'date';
-    dateInput.value = date;
-    form.appendChild(dateInput);
-
-    var timeInput = document.createElement('input');
-    timeInput.type = 'hidden';
-    timeInput.name = 'time';
-    timeInput.value = time;
-    form.appendChild(timeInput);
-
-    // 폼을 body에 추가하고 제출
-    document.body.appendChild(form);
-    form.submit();
-  }
 </script>

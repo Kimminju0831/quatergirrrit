@@ -1,4 +1,4 @@
-# ChatGPT turbo 3.5 이용하여 챗봇 구현
+# -*- coding: utf-8 -*-
 
 """
 pip install requests
@@ -8,6 +8,8 @@ import os
 import requests
 import openai
 import sys
+import json
+
 
 def create_script(departure, arrival, date, time):
 
@@ -26,9 +28,15 @@ def create_script(departure, arrival, date, time):
     result = "안녕하세요, 원콜 서비스를 이용하려 합니다. "
     result += response['choices'][0]['message']['content']
 
-    print(result)
+   #  print(result)
+
+    result_json = json.dumps({"result": result})
+
+    # print(result_json)
+    return result_json
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding='utf-8')
     
     dep = sys.argv[1] # 출발역
     arr = sys.argv[2] # 도착역
