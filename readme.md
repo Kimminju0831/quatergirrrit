@@ -151,7 +151,7 @@ Node >= v16.xx.xx<br/>
 
 
 <h3>✦ 주의사항</h3>
-1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.<br/>
+1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.<br/><br/>
 2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨.<br/>
 
 
@@ -163,6 +163,7 @@ Node >= v16.xx.xx<br/>
 - Mac OS
 
     python3 ./ktx_schedule/ktx_api.py {변수들}
+
 
 위와 같이 python을 기반으로 코드 수정이 OS에 맞게 이뤄져야 함.
 
