@@ -131,7 +131,9 @@
 # 🔧Tech
 <h3>✦ 개발 환경</h3>
 OS: Windows / Mac OS
+
 Python >= 3.10
+
 Node >= v16.xx.xx
 
 
@@ -164,7 +166,7 @@ Node >= v16.xx.xx
 
     python3 ./ktx_schedule/ktx_api.py {변수들}
 
-해당 코드들에 대한 수정이 필요함.
+위와 같이 python을 기반으로 코드 수정이 OS에 맞게 이뤄져야 함.
 
 
 # 💻Video
