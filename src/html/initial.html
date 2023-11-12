@@ -407,14 +407,14 @@
         </tbody>
       </table>
 
-
       <br>
-      <h1>카카오톡으로 받기</h1><br>
-
-      <div>
-        <a href="javascript:sendLink();"><img
-            src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" /></a>
-      </div>
+      <br>
+      <br>
+      <h1>카카오톡으로 받기 <a href="javascript:sendLink();"><img
+        src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width: 50px; padding-left: 10px;"/></a></h1><br>
+      <br>
+      <br>
+      <br>
 
 
     </div>
@@ -905,23 +905,24 @@
 <script>
   async function submitRowAsync(dep, arr, date, time) {
     try {
-      const { text } = await (
+      const script = await (
         await fetch(`/api/onecall_script`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            dep: dep,
-            arr: arr,
-            date: date,
-            time: time,
+            "dep": dep,
+            "arr": arr,
+            "date": date,
+            "time": time,
           }),
         })
       ).text();
+      console.log(script)  
   
       // 서버에서 받아온 텍스트 데이터를 script 엘리먼트에 설정
-      document.querySelector('#script').textContent = text;
+      document.querySelector('#script').textContent = script;
   
       //Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화 (한 번만 초기화 필요)
   //
