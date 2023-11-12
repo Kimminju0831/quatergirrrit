@@ -53,8 +53,8 @@ module.exports = async function (context, req) {
                                 console.log(`야삐 Arrival Station: ${arrival_station}`);
                                 // console.log(`야삐 Route: ${route}`);
                                 if (text_counter == 0) {
-                                    itineraryText += `{"dep": ${departure_station},`;
-                                    itineraryText += `"arr": ${arrival_station},}`;
+                                    itineraryText += `{"dep": "${departure_station}",`;
+                                    itineraryText += `"arr": "${arrival_station}"}`;
                                     // itineraryText += `"Route": '${route}',}`;
                                     
                                     text_counter += 1;
@@ -65,7 +65,7 @@ module.exports = async function (context, req) {
                 }
             }
             console.log(itineraryText)
-            context.res.body = JSON.parse(itineraryText);
+            // context.res.body = JSON.parse(itineraryText);
             
             context.res = {
                 status: 200,
