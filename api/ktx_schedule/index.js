@@ -14,16 +14,13 @@ module.exports = async function (context, req) {
     var jsonData = ""
     try {
         jsonData = JSON.parse(result);
-        console.log(jsonData);
+        // console.log(jsonData);
     } catch (error) {
         console.error('JSON 파싱 오류:', error.message);
     }
 
-    context.res = {
-        status: 200,
-        body: jsonData,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+    context.res.json({
+        // status: 200, /* Defaults to 200 */
+        res: jsonData
+    });
 }

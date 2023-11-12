@@ -837,18 +837,63 @@
 
         if (itineraries.length > 0) {
           const legs = itineraries[0]['legs'];
+          var endName = "";
+          var startName = "";
 
           for (const leg of legs) {
 
             if (leg['mode'] === 'TRAIN') {
-              const endName = leg['passStopList']['stationList'][0]['stationName'];
-              const startName = leg['passStopList']['stationList'][1]['stationName'];
+              endName = leg['passStopList']['stationList'][0]['stationName'];
+              startName = leg['passStopList']['stationList'][1]['stationName'];
               console.log('End Name with routeColor for TRAIN:', endName);
               console.log('Start Name with routeColor for TRAIN:', startName);
               document.querySelector('#findroad1').textContent =  endName;//여기여기!!!
               document.querySelector('#findroad2').textContent =  startName;//여기여기!!!
             }
           }
+
+          const dep = endName;
+          const arr = startName;
+          const date = startDateTime.toString().substr(0, 8);
+          const time = startDateTime.toString().substr(8, 14);
+
+          const schedule = await (
+            await fetch(`/api/ktx_schedule`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                "dep": dep,
+                "arr": arr,
+                "date": date,
+                "time": time,
+              }),
+            })
+          ).json();
+          // console.log(schedule)
+
+          var schedule_count = 0;
+          for (const s in schedule) {
+            // console.log(`${s}, ${Object.keys(schedule[s]).length}`)
+            schedule_count = Object.keys(schedule[s]).length;
+            var one_res = ""
+
+            for (const item in schedule[s]) {
+              var len = Object.keys(schedule[s][item]).length;
+              // console.log(`${len}`);
+              for (const val in schedule[s][item]) {
+                one_res += `${val} : ${schedule[s][item][val]}, `;
+                /* 반복문 기준으로 
+                    요금, 출발역, 출발 시간, 도착역, 도착 시간, 열차 종류, 열차 번호 순으로 나옴 
+                    charge, departure, deptime, arrival, arrtime, trainname, trainno
+                    이거 동적으로 넣는 코드만 작성하면 됨
+                */
+              }
+            }
+            console.log(one_res);
+          }
+          console.log(schedule_count);
         }
 
 
