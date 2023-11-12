@@ -189,36 +189,20 @@
 
     <p>출발지 좌표: <b id="resultStart">...</b></p>
     <p>도착지 좌표: <b id="resultEnd">...</b></p>
-
-
-    <p>Findroad API: <b id="findroad">...</b></p>
-    <br>
-    <p>이게머노</p>
-    <div id="itineraryContainer">
-      <!-- 여정 정보를 표시할 부분 -->
-    </div>
+    <!-- <button onclick="callTMapAPI()">Convert Addresses</button>
+    <button onclick="convertAddresses()">입력</button>
+    
+    <!- -test-->
+    <!-- <p>출발지 좌표: <b id="resultStart">...</b></p>
+    <p>도착지 좌표: <b id="resultEnd">...</b></p> -->
    
+    <p>Findroad API: <b id="findroad">...</b></p>
+
 
   </main>
+  </main>
 
-  <script>
-    // API에서 여정 정보를 받아와서 HTML에 표시하는 함수
-    async function displayItinerary() {
-      try {
-        const { itineraryText } = await (await fetch(`/api/findroad`)).json();
-  
-        const itineraryTextElement = document.getElementById('itineraryContainer');
-        itineraryTextElement.innerHTML = itineraryText;
-      } catch (error) {
-        console.error('Error fetching itinerary data:', error);
-      }
-    }
-  
-    // DOMContentLoaded 이벤트 발생 시 displayItinerary 함수 호출
-    document.addEventListener('DOMContentLoaded', displayItinerary);
-  </script>
-  
-  
+
   <script>
     (async function () {
       const { res } = await (await fetch(`/api/ktx_schedule`)).json();
@@ -240,49 +224,62 @@
     }());
   </script>
 
-  <script>
-    async function convertAddresses() {
-      const startX = document.getElementById('startX').value;
-      const startY = document.getElementById('startY').value;
 
-      try {
-        const resultStart = await callTMapAPI(startX);
-        const resultEnd = await callTMapAPI(startY);
+<script>
+  async function convertAddresses() {
+    const startX = document.getElementById('startX').value;
+    const startY = document.getElementById('startY').value;
 
-        // test
-        const resultStartElement = document.getElementById('resultStart');
-        resultStartElement.innerHTML = `출발지 (위도: ${resultStart.latitude}, 경도: ${resultStart.longitude})`;
+    try {
+      const resultStart = await callTMapAPI(startX);
+      const resultEnd = await callTMapAPI(startY);
 
-        const resultEndElement = document.getElementById('resultEnd');
-        resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
+      // test
+      const resultStartElement = document.getElementById('resultStart');
+      resultStartElement.innerHTML = `출발지 (위도: ${resultStart.latitude}, 경도: ${resultStart.longitude})`;
 
-        const { text } = await (
-          await fetch(`/api/findroad`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              startX: resultStart.longitude,
-              startY: resultStart.latitude,
-              endX: resultEnd.longitude,
-              endY: resultEnd.latitude,
-            }),
-          })
-        ).json();
+      const resultEndElement = document.getElementById('resultEnd');
+      resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
-        document.querySelector('#findroad').textContent = text;
-        const itineraryContainer = document.getElementById('itineraryContainer');
-        itineraryContainer.innerHTML = text;
-      } catch (error) {
-        console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
-      }
+      // 변환된 좌표로 Tmap API 호출 및 결과 표시
+      const { text } = await (
+        await fetch(`/api/findroad`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            startX: resultStart.longitude,
+            startY: resultStart.latitude,
+            endX: resultEnd.longitude,
+            endY: resultEnd.latitude,
+          }),
+        })
+      ).json();
+
+      document.querySelector('#findroad').textContent = text;
+    } catch (error) {
+      console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
     }
-  </script>
+  }
 
+  async function callTMapAPI(address) {
+    const url = `https://apis.openapi.sk.com/tmap/geo/convertAddress?version=1&searchTypCd=NtoO&reqAdd=${address}&reqMulti=S&resCoordType=WGS84GEO&appKey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5`;
 
+    const response = await fetch(url);
 
+    if (!response.ok) {
+      throw new Error(`API request failed with status code ${response.status}`);
+    }
 
+    const responseData = await response.json();
+
+    const latitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLat;
+    const longitude = responseData.ConvertAdd.newAddressList.newAddress[0].newLon;
+
+    return { latitude, longitude };
+  }
+</script>
 
   <script>
     Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
