@@ -393,44 +393,17 @@
       <table>
         <thead>
           <tr>
-            <th>열차번호</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Email</th>
+            <th>요금</th>
+            <th>출발역</th>
+            <th>출발 시간</th>
+            <th>도착역</th>
+            <th>도착 시간</th>
+            <th>열차 종류</th>
+            <th>열차 번호</th>
             <th>예매 시나리오(음성)</th>
-
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>James</td>
-            <td>Matman</td>
-            <td>(713) 123-8965</td>
-            <td><a href="mailto:jmatman@stewart.com">jmatman@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Johnny</td>
-            <td>Smith</td>
-            <td>(713) 584-9614</td>
-            <td><a href="mailto:jsmith@stewart.com">jsmith@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
-          </tr>
-          <tr>
-            <td>Susan</td>
-            <td>Johnson</td>
-            <td>(713) 847-1124</td>
-            <td><a href="mailto:sjohnson@stewart.com">sjohnson@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
-          </tr>
-          <tr>
-            <td>Tracy</td>
-            <td>Richardson</td>
-            <td>(713) 245-4821</td>
-            <td><a href="mailto:trichard@stewart.com">trichard@stewart.com</a></td>
-            <td> <button class="voicecheck" onclick="submitRowAsync('동대구역', '서울역', '20231112', '162300')">시나리오 확인</button></td>
-          </tr>
+        <tbody id="info-table">
         </tbody>
       </table>
 
@@ -878,26 +851,24 @@
           // console.log(schedule)
 
           var schedule_count = 0;
+          var res_str = ""
           for (const s in schedule) {
             // console.log(`${s}, ${Object.keys(schedule[s]).length}`)
             schedule_count = Object.keys(schedule[s]).length;
-            var one_res = ""
-
+            var one_res = "<tr>"
             for (const item in schedule[s]) {
               var len = Object.keys(schedule[s][item]).length;
               // console.log(`${len}`);
-              for (const val in schedule[s][item]) {
-                one_res += `${val} : ${schedule[s][item][val]}, `;
-                /* 반복문 기준으로 
-                    요금, 출발역, 출발 시간, 도착역, 도착 시간, 열차 종류, 열차 번호 순으로 나옴 
-                    charge, departure, deptime, arrival, arrtime, trainname, trainno
-                    이거 동적으로 넣는 코드만 작성하면 됨
-                */
-              }
+              one_res += `<td>${schedule[s][item]}</td>`;
+              // console.log(one_res)
             }
-            console.log(one_res);
+            one_res += `<td> <button class="voicecheck" onclick="submitRowAsync('${dep}', '${arr}', '${date}', '${time}')">시나리오 확인</button></td>`
+            one_res += "</tr>"
+            res_str += one_res
           }
-          console.log(schedule_count);
+
+          const table_in = document.getElementById("info-table");
+          table_in.innerHTML = res_str
         }
 
 
