@@ -287,6 +287,9 @@
     //     console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
     //   }
     // }
+   
+
+
     async function convertAddresses() {
   const startX = document.getElementById('startX').value;
   const startY = document.getElementById('startY').value;
@@ -304,29 +307,34 @@
     resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
     // 변환된 좌표로 Tmap API 호출 및 결과 표시
-    const response = await fetch(`/api/findroad`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        startX: resultStart.longitude,
-        startY: resultStart.latitude,
-        endX: resultEnd.longitude,
-        endY: resultEnd.latitude,
-      }),
-    });
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/findroad', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    
+    const requestBody = {
+      startX: resultStart.longitude,
+      startY: resultStart.latitude,
+      endX: resultEnd.longitude,
+      endY: resultEnd.latitude,
+    };
 
-    if (response.ok) {
-      const responseData = await response.json();
-      text = responseData.text;
-      console.log(text);
-    } else {
-      console.error(`Request failed with status ${response.status}`);
-      // 여기서 다양한 오류 처리를 수행할 수 있습니다.
-    }
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const responseData = JSON.parse(xhr.responseText);
+        text = responseData.text;
+        console.log(text);
+        document.querySelector('#findroad').textContent = text;
+      } else {
+        console.error(`Request failed with status ${xhr.status}`);
+      }
+    };
 
-    document.querySelector('#findroad').textContent = text;
+    xhr.onerror = function () {
+      console.error('오류 발생:', xhr.statusText);
+    };
+
+    xhr.send(JSON.stringify(requestBody));
+
   } catch (error) {
     console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
   }
