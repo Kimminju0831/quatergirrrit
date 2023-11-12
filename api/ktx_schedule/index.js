@@ -5,14 +5,14 @@ module.exports = async function (context, req) {
     const date = "20231112";
     const time = "120000";
 
-    const call_command = `python3 ./ktx_schedule/ktx_api.py ${dep} ${arr} ${date} ${time}`;
-    // console.log(call_command);
+    const call_command = `python ./ktx_schedule/ktx_api.py ${dep} ${arr} ${date} ${time}`;
+    console.log(call_command);
 
     const execSync = require('child_process').execSync;
     const resultBuffer = execSync(call_command, { encoding: 'utf-8' });
     const result = resultBuffer.toString();
 
-    // console.log(result.toString("utf8"))
+    console.log(result.toString("utf8"))
 
     var jsonData = ""
     try {
