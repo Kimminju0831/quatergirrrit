@@ -129,7 +129,6 @@
 이것이 더는 익숙한 풍경이 아니기를 바랍니다.<br/><br/><br/></p>
 
 # 🔧Tech
-<br/>
 <h3>✦ 개발 환경</h3>
 <br/>
 OS: Windows / Mac OS<br/>
