@@ -130,12 +130,9 @@
 
 # 🔧Tech
 <h3>✦ 개발 환경</h3>
-OS: Windows / Mac OS
-
-Python >= 3.10
-
-Node >= v16.xx.xx
-
+OS: Windows / Mac OS<br/>
+Python >= 3.10<br/>
+Node >= v16.xx.xx<br/>
 
 <h3>✦ 설치 및 실행 방법</h3>
 
@@ -156,7 +153,8 @@ Node >= v16.xx.xx
 <h3>✦ 주의사항</h3>
 1. DB 접근, API 키 등 실행 과정에서 필요한 주요 변수를 수정할 필요가 있음.
 
-2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨. 
+2. Windows와 Mac에 따라 python 코드 동작이 다르게 됨.
+
 - Windows
     
     python ./ktx_schedule/ktx_api.py {변수들}
