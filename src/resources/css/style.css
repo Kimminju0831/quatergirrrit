@@ -310,9 +310,9 @@
 .opilsol-N5 .slide-container .swiper-slide .cardset:hover .btnset { display: inline-flex; }
 .opilsol-N5 .cardset .cardset-figure { width: 100%; height: 28rem; }
 .opilsol-N5 .cardset.cardset-border { border: 0 none; }
-.opilsol-N5 .cardset .cardset-body { padding: 0.2rem; width: 100%; }
+.opilsol-N5 .cardset .cardset-body { padding: 5.2rem; width: 100%; }
 .opilsol-N5 .cardset .cardset-body .cardset-tit { line-height: var(--lh-4); font-size: var(--fs-h4); font-weight: 700; }
-.opilsol-N5 .cardset .cardset-body .cardset-desc { overflow: hidden; margin: 2.4rem 0rem 0; width: 100%; height: 2rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 1.6rem; font-weight: 400; color: var(--text-color3); }
+.opilsol-N5 .cardset .cardset-body .cardset-desc { overflow: hidden; margin: 2.4rem 0rem 0; width: 100%; height: 6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 1.6rem; font-weight: 400; color: var(--text-color3); }
 .opilsol-N5 .btnset { display: none; margin-top: 2.4rem; position: relative; font-size: var(--fs-p1); font-weight: 500; color: #da291c; }
 .opilsol-N5 .swiper-control { position: absolute; right: 4rem; top: -7.5rem; }
 .opilsol-N5 .swiper-button-next::after,.opilsol-N5 .swiper-button-prev::after { display: none; }
