@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
 
         if (response.ok) {
             const json_response = await response.json();
-            console.log(JSON.stringify(json_response, null, 2));
+            // console.log(JSON.stringify(json_response, null, 2));
 
             let itineraryText = '';
             var text_counter = 0;
@@ -41,7 +41,7 @@ module.exports = async function (context, req) {
                     if ("Lane" in leg) {
                         const lanes = leg["Lane"];
             
-                        console.log("Lanes:", lanes);
+                        // console.log("Lanes:", lanes);
                         
                         for (let i = 0; i < lanes.length; i++) {
                             const route = lanes[i].route || `No route information for Lane ${i}`;
@@ -51,11 +51,11 @@ module.exports = async function (context, req) {
             
                                 console.log(`야삐 Departure Station: ${departure_station}`);
                                 console.log(`야삐 Arrival Station: ${arrival_station}`);
-                                console.log(`야삐 Route: ${route}`);
+                                // console.log(`야삐 Route: ${route}`);
                                 if (text_counter == 0) {
-                                    itineraryText += `{"dep": "${departure_station}",`;
-                                    itineraryText += `"arr": "${arrival_station}",`;
-                                    itineraryText += `"Route": "${route}",}`;
+                                    itineraryText += `{"dep": ${departure_station},`;
+                                    itineraryText += `"arr": ${arrival_station},}`;
+                                    // itineraryText += `"Route": '${route}',}`;
                                     
                                     text_counter += 1;
                                 }
