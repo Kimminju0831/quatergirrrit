@@ -35,7 +35,10 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip
              pip install -r requirements.txt
-
+      - name: Install node-fetch
+        run: npm install node-fetch
+                 
+      
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
