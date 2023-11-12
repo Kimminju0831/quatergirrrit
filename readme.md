@@ -129,25 +129,25 @@
 이것이 더는 익숙한 풍경이 아니기를 바랍니다.<br/><br/><br/></p>
 
 # 🔧Tech
-<p align="center"><img src="./readme_img/ppt/work_flow.PNG" width="800"/></p>
-<br/>
+<h3>✦ 개발 환경</h3>
+***
 
-<h3>✦ 자바 스크립트 활용</h3>
-- 배열 사용 , timer 사용한 시간 제한 기능<br/>
-- bootstrap 활용 <br/>
-- json 활용, 음식 db 구축 후 반복문으로 활용 <br/>
+<h3>✦ 설치 및 실행 방법</h3>
+***
 
-<br/>
-<h3>✦ 배포 및 호스팅</h3>
-- git.io 를 통한 배포로 모든 사람이 손쉽게 접근 가능한 프로덕트 구현<br/>
-<br/>
+    npm install -g @azure/static-web-apps-cli
 
-<h3>✦ [추가예정]</h3>
-- Apps Script 활용해 사용자의 기본 정보 체크 <br/>
-- 업데이트 일괄 알림 (메일 or 전화번호로)<br/>
+    npm shrinkwrap
+    npm install
 
-<br>
-</br>
+    pip install -r requirements.txt
+
+    swa start src --api-location api
+
+<h3>✦ 주의사항</h3>
+***
+
+
 
 # 💻Video
 
