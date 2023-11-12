@@ -198,6 +198,8 @@
    
     <p>Findroad API: <b id="findroad">...</b></p>
 
+    <p>Script: <b id="script">...</b></p>
+
 
   </main>
   </main>
@@ -282,18 +284,53 @@
 </script>
 
   <script>
-    Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
+    async function submitRowAsync(dep, arr, date, time) {
+      try {
+        const response = await fetch('/api/onecall_script', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            dep: dep,
+            arr: arr,
+            date: date,
+            time: time,
+          }),
+        });
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const responseData = await response.json();
+        const resultData = responseData.result;
+        // 여기에서 서버 응답 처리
+        console.log(responseData);
+        document.querySelector('#script').textContent = responseData;
 
-    function sendLink() { // 카카오톡 공유하기
-      Kakao.Link.sendDefault({
-        objectType: 'text',
-        text: '안녕하세요, 원콜 서비스를 이용하려 합니다. 물금역에서 대전역으로 12월 11일 오후 12시 23분에 출발하는 기차 승차권 3매를 예매하고 싶어요. 제 이름은 홍길동입니다.',
-        link: {
-          mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-          webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-        },
-      })
+        Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화
+
+        function sendLink() { // 카카오톡 공유하기
+          Kakao.Link.sendDefault({
+            objectType: 'text',
+            text: '안녕하세요, 원콜 서비스를 이용하려 합니다. 물금역에서 대전역으로 12월 11일 오후 12시 23분에 출발하는 기차 승차권 3매를 예매하고 싶어요. 제 이름은 홍길동입니다.',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+              webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+            },
+          })
+        }
+
+      } catch (error) {
+        // 오류 처리
+        console.error('Error submitting form:', error);
+      }
     }
+  
+  // 예시 호출
+  // submitRowAsync('departureValue', 'arrivalValue', 'dateValue', 'timeValue');
+
   </script>
 
   <div>
