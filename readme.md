@@ -131,7 +131,9 @@
 # 🔧Tech
 <h3>✦ 개발 환경</h3>
 - OS: Windows / Mac OS
+
 - Python >= 3.10
+  
 - Node >= v16.xx.xx
 <br/>
 <h3>✦ 설치 및 실행 방법</h3>
