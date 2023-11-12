@@ -53,7 +53,7 @@
                 <a class="header-sublink" href="javascript:void(0)">
                   <span>다행</span>
                 </a>
-             
+
             </ul>
           </li>
           <li class="header-gnbitem">
@@ -66,10 +66,10 @@
                   <span>QuarterGirit</span>
                 </a>
               </li>
-           
+
             </ul>
           </li>
-        
+
       </div>
       <div class="header-right">
         <div class="header-utils">
@@ -118,7 +118,7 @@
                   <span>다행</span>
                 </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="fullmenu-gnbitem">
@@ -131,10 +131,10 @@
                   <span>QuarterGirit</span>
                 </a>
               </li>
-             
+
             </ul>
           </li>
-         
+
         </ul>
       </div>
       <button class="fullmenu-close">
@@ -379,7 +379,8 @@
       <button onclick="convertAddresses()">Convert Addresses</button>
       <p>출발지 좌표: <b id="resultStart">...</b></p>
       <p>도착지 좌표: <b id="resultEnd">...</b></p>
-
+      <p>출발역: <b id="findroad1">...</b></p>
+      <p>도착역: <b id="findroad2">...</b></p>
       <br><br>
       <h1>탑승 가능한 열차 목록</h1>
       <br>
@@ -428,7 +429,7 @@
       </table>
 
 
-      <br> 
+      <br>
       <h1>카카오톡으로 받기</h1><br>
 
       <div>
@@ -757,7 +758,7 @@
 </body>
 
 
-
+<!-- 
 
 <script>
   (async function () {
@@ -778,7 +779,7 @@
 
     document.querySelector('#ktx_result').textContent = res_text;
   }());
-</script>
+</script> -->
 
 
 <script>
@@ -798,11 +799,18 @@
       resultEndElement.innerHTML = `도착지 (위도: ${resultEnd.latitude}, 경도: ${resultEnd.longitude})`;
 
       // 변환된 좌표로 Tmap API 호출 및 결과 표시
-      const { text } = await (
-        await fetch(`/api/findroad`, {
+      // const response = await fetch(url, {
+      //       method: 'POST',
+      //       headers: headers,
+      //       body: JSON.stringify(payload)
+      //   });
+      const fullResponse = await (
+        await fetch("https://apis.openapi.sk.com/transit/routes", {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            "accept": "application/json",
+            "content-type": "application/json",
+            "appKey": "e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5"
           },
           body: JSON.stringify({
             startX: resultStart.longitude,
@@ -811,9 +819,44 @@
             endY: resultEnd.latitude,
           }),
         })
-      ).json();
+      ).text();
 
-      document.querySelector('#findroad').textContent = text;
+      // console.log('Server Response:', fullResponse);
+
+      try {
+        const parsedResponse = JSON.parse(fullResponse);
+        // document.querySelector('#findroad').textContent =  parsedResponse['metaData']["plan"]["itineraries"][0]['legs'][1]["end"]["name"]; //여기여기!!!
+
+        // console.log("dididididididi",  parsedResponse['metaData']["plan"]["itineraries"][0]['legs']);
+        const itineraries = parsedResponse['metaData']["plan"]["itineraries"];
+
+        if (itineraries.length > 0) {
+          const legs = itineraries[0]['legs'];
+
+          for (const leg of legs) {
+
+            if (leg['mode'] === 'TRAIN') {
+              const endName = leg['passStopList']['stationList'][0]['stationName'];
+              const startName = leg['passStopList']['stationList'][1]['stationName'];
+              console.log('End Name with routeColor for TRAIN:', endName);
+              console.log('Start Name with routeColor for TRAIN:', startName);
+              document.querySelector('#findroad1').textContent =  endName;//여기여기!!!
+              document.querySelector('#findroad2').textContent =  startName;//여기여기!!!
+
+              // 여기에 다른 로직을 추가할 수 있습니다.
+              // 예: 얻은 endName을 어딘가에 저장하거나 활용하는 등
+            }
+          }
+        }
+
+
+      } catch (error) {
+        // 서버 응답이 JSON 형식이 아닌 경우 또는 파싱에 실패한 경우
+        document.querySelector('#findroad').textContent = 'Failed to parse JSON. Displaying raw response: ' + fullResponse;
+        console.log("=====full response: ", fullResponse);
+      }
+
+
     } catch (error) {
       console.error('주소 변환 및 API 호출에 실패하였습니다:', error);
     }
@@ -857,7 +900,7 @@
     // 폼 요소를 동적으로 생성
     var form = document.createElement('form');
     form.method = 'post';
-    form.action = '/api/onecall_script';
+    form.action = '../../api/onecall_script';
 
     // hidden input 요소를 동적으로 생성하여 값을 폼에 추가
     var depInput = document.createElement('input');
