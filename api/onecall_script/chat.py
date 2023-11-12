@@ -7,16 +7,16 @@ import sys
 import json
 
 
-def create_script(departure, arrival, date, time):
+def create_script(departure, arrival, datetime):
 
-    CONTENT = departure + "에서 " + arrival + "으로 " + date + " " + time + "에 가는 기차 승차권을 예매하는 말을 1줄로 해줘" 
+    CONTENT = departure + "에서 " + arrival + "으로 " + datetime + " 에 가는 기차 승차권을 예매하는 말을 1줄로 해줘" 
 
     openai.api_key = "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"
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "user", "content": "동대구역에서 서울역으로 20231112 162300 에 가는 기차 승차권을 예매하는 말을 1줄로 해줘."},
+            {"role": "user", "content": "동대구역에서 서울역으로 2023-11-12-16-23-00 에 가는 기차 승차권을 예매하는 말을 1줄로 해줘."},
             {"role": "assistant", "content": "동대구역에서 서울역으로 11월 12일 16시 23분에 출발하는 기차 승차권을 예매하고 싶어요."},
             {"role": "user", "content": CONTENT},
         ],
@@ -38,7 +38,6 @@ if __name__ == "__main__":
     
     dep = sys.argv[1] # 출발역
     arr = sys.argv[2] # 도착역
-    date = sys.argv[3] # 출발 날짜
-    time = sys.argv[4] # 출발 시간
+    datetime = sys.argv[3] # 출발 날짜
 
-    create_script(dep, arr, date, time)
+    create_script(dep, arr, datetime)

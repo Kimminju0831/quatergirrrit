@@ -904,7 +904,7 @@
 </script>
 
 <script>
-  async function submitRowAsync(dep, arr, date, time) {
+  async function submitRowAsync(dep, arr, datetime) {
     try {
       const script = await (
         await fetch(`/api/onecall_script`, {
@@ -915,8 +915,7 @@
           body: JSON.stringify({
             "dep": dep,
             "arr": arr,
-            "date": date,
-            "time": time,
+            "datetime": datetime,
           }),
         })
       ).text();
