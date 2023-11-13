@@ -31,7 +31,26 @@
 <summary>상세 기술 명세서</summary>
 <div markdown="1">
 
-
+1. 입력받은 출발 장소, 도착 장소에서 경유하는 역을 받음 (이거는 findroad 쪽)
+2. 출발역, 도착역, 그리고 입력받은 시간을 파이썬 코드에 입력
+    1. 입력받은 시간은 202311151200일 경우, 20231115 / 1200 으로 분리해서 들어감
+3. DB에서 출발역, 도착역의 역 코드를 가져옴
+4. 역 코드, 처리한 시간을 기반으로 공공 데이터 api에 ktx 노선만을 요청, 받아옴
+    1. 받아온 데이터의 처리 형식
+    
+    ```python
+    {
+        'charge' : row.adultcharge.text,
+        'departure' : row.depplacename.text,
+        'deptime' : datetime.strptime(row.depplandtime.text, '%Y%m%d%H%M%S'),
+        'arrival' : row.arrplacename.text,
+        'arrtime' : datetime.strptime(row.arrplandtime.text, '%Y%m%d%H%M%S'),
+        'trainname' : row.traingradename.text,
+        'trainno' : row.trainno.text
+    }
+    ```
+    
+5. 이를 json 형태로 처리, 웹 사이트에 동적으로 테이블화 해서 나타냄
 
 </div>
 </details>
