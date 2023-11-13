@@ -84,8 +84,7 @@
 
 | 김민주 | 김영효 | 이은지 | 최희정 |
 | :---: | :---: | :---: | :---: |
-| <a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hddhdd" width="100" height="100"></a> | <a href="https://github.com/kkyh12180"><img src="https://avatars.githubusercontent.com/u/80297525?v=4" alt="kkyh12180" width="100" height="100"></a> | <a href="https://github.com/leeeeunji"><img src="https://avatars.githubusercontent.com/u/72423836?v=4" alt="leeeeunji" width="100" height="100"></a> | 
-<a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hdddhdd" width="100" height="100"></a> |
+| <a href="https://github.com/Kimminju0831"><img src="https://avatars.githubusercontent.com/u/71652881?v=4" alt="Kimminju0831" width="100" height="100"></a> | <a href="https://github.com/kkyh12180"><img src="https://avatars.githubusercontent.com/u/80297525?v=4" alt="kkyh12180" width="100" height="100"></a> | <a href="https://github.com/leeeeunji"><img src="https://avatars.githubusercontent.com/u/72423836?v=4" alt="leeeeunji" width="100" height="100"></a> | <a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hdddhdd" width="100" height="100"></a> |
 | 팀장 [📨](mailto:nuly08@naver.com)| 팀원 [📨](mailto:kyh12180@gmail.com) | 팀원 [📨](mailto:leeej106@knu.ac.kr) | 팀원 [📨](mailto:nuly08@naver.com) |
 
 
