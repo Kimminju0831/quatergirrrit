@@ -31,7 +31,7 @@
 <summary>상세 기술 명세서</summary>
 <div markdown="1">
 
-안녕
+
 
 </div>
 </details>
