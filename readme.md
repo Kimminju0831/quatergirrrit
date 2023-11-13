@@ -240,7 +240,9 @@ This repo has a dev container. This means if you open it inside a [GitHub Codesp
 
 # 💻 시연영상
 
-### 🔥 데모 영상입니다. [Watch Video - SMARTUS](https://youtu.be/K0PAryFDTk8)
+### 🔥 데모 영상입니다.
+
+[![Video Label](http://img.youtube.com/vi/Xy4zqhwjVgE/0.jpg)](https://youtu.be/Xy4zqhwjVgE)
 
 <br>
 </br>
