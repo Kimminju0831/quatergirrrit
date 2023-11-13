@@ -10,6 +10,13 @@
 <br>
 </br>
 
+api 중 배포할 경우 실행 환경에 따라 실행되지 않는 오류가 있어, 시연 영상은 localhost 포트 4280 번에서 진행하였음을 알립니다. 
+
+아래는 배포 링크이지만, 실행 운영체제나 시간 / IP 주소에 따라 api 와 일부 기능이 동작하지 않을수도 있음을 알립니다.
+
+https://green-pebble-0f3e30300.4.azurestaticapps.net/html/initial.html
+<br>
+</br>
 # 💡 프로젝트 한 줄 설명
 <br>
 <p align="center">
