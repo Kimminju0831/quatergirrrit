@@ -71,14 +71,15 @@
 
 위와 같이 python을 기반으로 코드 수정이 OS에 맞게 이뤄져야 함.
 
-
-
 <br>
 </br>
 
 # 💻 시연영상
 
 ### 🔥 데모 영상입니다. [Watch Video - SMARTUS](https://youtu.be/K0PAryFDTk8)
+
+<br>
+</br>
 
 # 🙆‍♀️ Team Info
 
@@ -88,7 +89,6 @@
 | 팀장 [📨](mailto:nuly08@naver.com)| 팀원 [📨](mailto:kyh12180@gmail.com) | 팀원 [📨](mailto:leeej106@knu.ac.kr) | 팀원 [📨](mailto:nuly08@naver.com) |
 
 
-https://green-pebble-0f3e30300.4.azurestaticapps.net/
 
 # Vanilla JavaScript App
 
