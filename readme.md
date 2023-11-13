@@ -143,7 +143,18 @@
 <summary>상세 기술 명세서</summary>
 <div markdown="1">
 
-안녕
+## OpenAi
+
+- dep: 출발역 , arr: 도착역, datetime: 출발시간
+- ktx api로부터 위 변수를 전달받아 프롬프트 엔지니어링을 통해 원콜 서비스 전화 스크립트 생성 (생성형 AI)
+- Model: GPT turbo 3.5
+- request:
+    - dep: 출발역
+    - arr: 도착역
+    - datetime: 출발 시간
+    - model, key값, temperature값
+- response:
+    - message: 원콜 서비스 전화 스크립트
 
 </div>
 </details>
