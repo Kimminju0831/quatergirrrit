@@ -20,25 +20,9 @@
 </br>
 
 
-# UI / UX 소개
-
-<h2>📎메인 메뉴 선택 화면</h2>
-
-<p align="center"><img src="./readme_img/ppt/demo_main.PNG" width="500" /></p>
-
-<br>
-</br>
-
-
-<h2>🎮 키오스크 게임 진행</h2>
-<p align="center"><img src="./readme_img/select.png" width="200" height="450"/></p>
-<h4 align="center">💡 - 실제 키오스크와 똑같은 Ui/Ux 를 직접 만져보며 실행할 수 있습니다.</h4>
-
-<br>
-</br>
-
-
 # 🔧 프로젝트에 활용된 기술
+
+<h3>✦ 주요 기술 스택 </h3>
 
 <br>
 <a href="https://ibb.co/hH8bhkF"><img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0"></a>
@@ -97,15 +81,12 @@
 ### 🔥 데모 영상입니다. [Watch Video - SMARTUS](https://youtu.be/K0PAryFDTk8)
 
 # 🙆‍♀️ Team Info
-<h3> Team Leader - 컴퓨터학부 20학번 김민주 </h3>
-<br/>
-<h3> Team Member - 컴퓨터학부 20학번 김영효 </h3>
-<br/>
-<h3> Team Member - 컴퓨터학부 20학번 이은지 </h3>
-<br/>
-<h3> Team Member - 컴퓨터학부 20학번 최희정 </h3>
-<br/>
 
+| 김민주 | 김영효 | 이은지 | 최희정 |
+| :---: | :---: | :---: | :---: |
+| <a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hddhdd" width="100" height="100"></a> | <a href="https://github.com/kkyh12180"><img src="https://avatars.githubusercontent.com/u/80297525?v=4" alt="kkyh12180" width="100" height="100"></a> | <a href="https://github.com/leeeeunji"><img src="https://avatars.githubusercontent.com/u/72423836?v=4" alt="leeeeunji" width="100" height="100"></a> | 
+<a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hdddhdd" width="100" height="100"></a> |
+| 팀장 [📨](mailto:nuly08@naver.com)| 팀원 [📨](mailto:kyh12180@gmail.com) | 팀원 [📨](mailto:leeej106@knu.ac.kr) | 팀원 [📨](mailto:nuly08@naver.com) |
 
 
 https://green-pebble-0f3e30300.4.azurestaticapps.net/
