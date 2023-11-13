@@ -26,8 +26,9 @@
 <br>
 <a href="https://ibb.co/LCqhmjL"><img src="https://i.ibb.co/mHYFkZL/ktx-api.png" alt="ktx-api" style="width:80%" border="0"></a>
 </br>
+<br>
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary>상세 기술 명세서</summary>
 <div markdown="1">
 
 안녕
@@ -40,8 +41,22 @@
 <br>
 <a href="https://ibb.co/5cN5xZ4"><img src="https://i.ibb.co/XJhzkHL/tmap-api.png" alt="tmap-api" style="width:80%" border="0"></a>
 </br>
+<br>
+<summary>상세 기술 명세서</summary>
+<div markdown="1">
+
+안녕
+
+</div>
 <h2>두 번째, 인공지능</h2>
 <br>
+<br>
+<summary>상세 기술 명세서</summary>
+<div markdown="1">
+
+안녕
+
+</div>
 <br>
 <h2>세 번째, 서버</h2>
 <h3> <a href="https://ibb.co/rpYPd4h"><img src="https://i.ibb.co/B6bDnqJ/Microsoft-Azure.png" alt="Microsoft-Azure" border="0" style="width:20px;"></a>  Azure Static Web Apps</h3>
