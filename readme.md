@@ -1,8 +1,3 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=04509f&height=300&section=header&text=다%20행&fontSize=90&animation=fadeIn&fontAlignY=38&desc=다같이%20행복한%20기차예매%20Team%20QuarterGirit!&descAlignY=51&descAlign=62)
-
-<br/>
-<br/>
-
 # 팀명
 
 ![transparent](https://capsule-render.vercel.app/api?type=transparent&fontColor=04509f&text=QuarterGirit&height=150&fontSize=60&desc=쿼터기릿&descAlignY=75&descAlign=60)
