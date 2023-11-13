@@ -20,13 +20,16 @@
 
 # 🔧 프로젝트에 활용된 기술
 
-<h3>✦ 주요 기술 스택 </h3>
+<h3>👉🏻 Overview (한 눈에 보기) </h3>
 
 <br>
 <a href="https://ibb.co/hH8bhkF"><img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0" style="width:80%"></a>
 </br>
 <br>
 <br>
+<br>
+<br>
+<h2>API</h2>
 <h3>1️⃣ 국토교통부 열차 정보 API</h3>
 <br>
 <a href="https://ibb.co/LCqhmjL"><img src="https://i.ibb.co/mHYFkZL/ktx-api.png" alt="ktx-api" style="width:80%" border="0"></a>
@@ -37,6 +40,8 @@
 <br>
 <a href="https://ibb.co/5cN5xZ4"><img src="https://i.ibb.co/XJhzkHL/tmap-api.png" alt="tmap-api" style="width:80%" border="0"></a>
 </br>
+<h2>인공지능</h2>
+<h2>서버</h2>
 <h3>✦ 개발 환경</h3>
 
 - Python >= 3.10
