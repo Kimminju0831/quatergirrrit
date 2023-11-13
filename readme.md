@@ -23,7 +23,7 @@
 <h3>✦ 주요 기술 스택 </h3>
 
 <br>
-<a href="https://ibb.co/hH8bhkF"><img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0" style="width:100%"></a>
+<a href="https://ibb.co/hH8bhkF">< align="center" img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0" style="width:80%"></a>
 </br>
 
 <h3>✦ 개발 환경</h3>
