@@ -26,6 +26,10 @@
 <a href="https://ibb.co/hH8bhkF"><img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0" style="width:80%"></a>
 </br>
 
+<a href="https://ibb.co/LCqhmjL"><img src="https://i.ibb.co/mHYFkZL/ktx-api.png" alt="ktx-api" style="width:60%" border="0"></a>
+
+<a href="https://ibb.co/5cN5xZ4"><img src="https://i.ibb.co/XJhzkHL/tmap-api.png" alt="tmap-api" style="width:60%" border="0"></a>
+
 <h3>✦ 개발 환경</h3>
 
 - Python >= 3.10
