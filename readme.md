@@ -41,7 +41,7 @@
 # 🔧 프로젝트에 활용된 기술
 
 <br>
-<img src="https://ibb.co/hH8bhkF"/>
+<a href="https://ibb.co/hH8bhkF"><img src="https://i.ibb.co/wC6V3Th/tech-image.png" alt="tech-image" border="0"></a>
 </br>
 
 <h3>✦ 개발 환경</h3>
