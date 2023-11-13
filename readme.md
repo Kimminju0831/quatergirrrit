@@ -20,7 +20,7 @@ https://green-pebble-0f3e30300.4.azurestaticapps.net/html/initial.html
 # 💡 프로젝트 한 줄 설명
 <br>
 <p align="center">
-🚀 디지털 취약계층 (노년층 등) 의 기차표 인터넷 발권 불편 문제를 해결하기 위해 ktx 공공 api 와 open ai 를 활용해 코레일의 원콜 서비스를 편리하게 제공
+🚀 디지털 취약계층의 기차표 인터넷 발권 불편 문제를 해결하기 위한 서비스
 </p>
 </br>
 
