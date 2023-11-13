@@ -44,6 +44,15 @@ Azure App Service Static Web Apps is a streamlined hosting option for developers
 * Authentication and Authorization with flexible role and access definitions
  
 To get started, follow the [Static Web Apps quickstart](https://docs.microsoft.com/en-us/azure/static-web-apps/getting-started?WT.mc_id=staticwebapps-docs-cxa) to build and deploy your first static web app in minutes. For more info about Static Web Apps, see the [Static Web Apps documentation](https://docs.microsoft.com/en-us/azure/static-web-apps/?WT.mc_id=build2020_swa-docs-cxa) and the guided learning paths in Microsoft Learn for [creating and publishing an Angular, React, Svelte, or Vue JavaScript app and API](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api/?WT.mc_id=build2020_swa-frameworks-cxa) or for [creating and publishing an app with the Gatsby static site generator](https://docs.microsoft.com/en-us/learn/modules/create-deploy-static-webapp-gatsby-app-service/?WT.mc_id=build2020_swa-sitegen-cxa).
+<br>
+<br>
+# Vanilla JavaScript App
+
+[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build JavaScript apps in minutes. Use this repo with the [quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=vanilla-javascript) to build and customize a new static site.
+
+This repo is used as a starter for a _very basic_ HTML web application using no front-end frameworks.
+
+This repo has a dev container. This means if you open it inside a [GitHub Codespace](https://github.com/features/codespaces), or using [VS Code with the remote containers extension](https://code.visualstudio.com/docs/remote/containers), it will be opened inside a container with all the dependencies already installed.
 
 <br>
 <br>
@@ -116,12 +125,3 @@ To get started, follow the [Static Web Apps quickstart](https://docs.microsoft.c
 | <a href="https://github.com/Kimminju0831"><img src="https://avatars.githubusercontent.com/u/71652881?v=4" alt="Kimminju0831" width="100" height="100"></a> | <a href="https://github.com/kkyh12180"><img src="https://avatars.githubusercontent.com/u/80297525?v=4" alt="kkyh12180" width="100" height="100"></a> | <a href="https://github.com/leeeeunji"><img src="https://avatars.githubusercontent.com/u/72423836?v=4" alt="leeeeunji" width="100" height="100"></a> | <a href="https://github.com/hdddhdd"><img src="https://avatars.githubusercontent.com/u/71762328?v=4" alt="hdddhdd" width="100" height="100"></a> |
 | 팀장 [📨](mailto:nuly08@naver.com)| 팀원 [📨](mailto:kyh12180@gmail.com) | 팀원 [📨](mailto:leeej106@knu.ac.kr) | 팀원 [📨](mailto:nuly08@naver.com) |
 
-
-
-# Vanilla JavaScript App
-
-[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build JavaScript apps in minutes. Use this repo with the [quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=vanilla-javascript) to build and customize a new static site.
-
-This repo is used as a starter for a _very basic_ HTML web application using no front-end frameworks.
-
-This repo has a dev container. This means if you open it inside a [GitHub Codespace](https://github.com/features/codespaces), or using [VS Code with the remote containers extension](https://code.visualstudio.com/docs/remote/containers), it will be opened inside a container with all the dependencies already installed.
