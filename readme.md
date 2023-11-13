@@ -36,7 +36,7 @@
 <br>
 <br>
 <h2>세 번째, 서버</h2>
-<h3> Azure Static Web Apps <img src="https://url.kr/txoi2l"/></h3>
+<h3> Azure Static Web Apps <img src="https://url.kr/mb2wli"/></h3>
 
 Azure App Service Static Web Apps is a streamlined hosting option for developers building modern full-stack JavaScript web apps on Azure. Static Web Apps is tailored for apps with static front-end and optional dynamic back-end powered by Azure Functions serverless APIs. Static Web Apps feature: 
 * A single unified workflow based on GitHub actions from source code to global availability in the cloud
