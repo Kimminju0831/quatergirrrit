@@ -138,6 +138,9 @@
 <br>
 <h2>두 번째, 인공지능</h2>
 <br>
+<a href="https://ibb.co/3hKG4yJ"><img src="https://i.ibb.co/q16X7MZ/image.png" alt="image" style="width:80%" border="0"></a>
+</br>
+<br>
 <br>
 <details>
 <summary>상세 기술 명세서</summary>
