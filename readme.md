@@ -52,7 +52,7 @@
     
 5. 이를 json 형태로 처리, 웹 사이트에 동적으로 테이블화 해서 나타냄
 
-
+<br>
 | 함수명 | 설명 |
 | --- | --- |
 | save_train(conn, cursor) | 열차 정보(열차 코드, 종류)를 DB에 저장 |
@@ -61,6 +61,18 @@
 | save_all_station(conn, cursor) | 모든 도시의 역을 DB에 저장 |
 | get_ktx_car_num(conn, cursor) | ktx에 해당하는 열차 코드 배열을 반환 |
 | get_schedule(dep, arr, cursor, date, time_str, train_codes) | dep: 출발역, arr: 도착역, date: YYYYMMDD, 조회를 시도하는 날짜, time_str: HHMMSS, 조회의 기준이 되는 시간, train_codes: 열차 종류 배열, dep과 arr 노선, date에 해당하는 모든 time_str 이후 train_codes 열차 조회, 시간 순 정렬 배열 반환. 배열 내부 정보는 dict로 저장 |
+</br>
+<br>
+| 변수명 | 설명 |
+| --- | --- |
+| SERVICE_KEY | 공공데이터포털 API 서비스 키 |
+| DB_URL | DB 접근 URL |
+| PORT | DB 접근 포트 |
+| DB_ID | DB 접근 ID |
+| DB_PASSWORD | DB 접근 비밀번호 |
+| DB_NAME | 사용하는 DB 이름 |
+</br>
+<br>
 </div>
 </details>
 <br>
