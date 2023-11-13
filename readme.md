@@ -39,6 +39,11 @@
 
 
 # 🔧 프로젝트에 활용된 기술
+
+<br>
+<img src="https://ibb.co/hH8bhkF"/>
+</br>
+
 <h3>✦ 개발 환경</h3>
 
 - Python >= 3.10
