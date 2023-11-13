@@ -3,24 +3,19 @@
 <br/>
 <br/>
 
-# 👩🏻 팀명
+# 팀명
 
 ![transparent](https://capsule-render.vercel.app/api?type=transparent&fontColor=04509f&text=QuarterGirit&height=150&fontSize=60&desc=쿼터기릿&descAlignY=75&descAlign=60)
 
 <br>
 </br>
 
-
-
 # 📚 제출 타입 및 주제
 <p>[S타입] 디지털 취약 계층을 위한 One-stop 기차 예약 / 안내 서비스</p>
-
 <br>
 </br>
 
 # 💡 프로젝트 한 줄 설명
-
-
 <br>
 </br>
 
@@ -43,7 +38,7 @@
 </br>
 
 
-# 🔧 Tech
+# 🔧 프로젝트에 활용된 기술
 <h3>✦ 개발 환경</h3>
 
 - Python >= 3.10
@@ -88,11 +83,12 @@
 위와 같이 python을 기반으로 코드 수정이 OS에 맞게 이뤄져야 함.
 
 
+
+<br>
+</br>
 # 💻 시연영상
 
 ### 🔥 데모 영상입니다. [Watch Video - SMARTUS](https://youtu.be/K0PAryFDTk8)
-<br>
-</br>
 
 # 🙆‍♀️ Team Info
 <h3> Team Leader - 컴퓨터학부 20학번 김민주 </h3>
