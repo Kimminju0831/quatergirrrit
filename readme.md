@@ -91,7 +91,47 @@
 <summary>상세 기술 명세서</summary>
 <div markdown="1">
 
-안녕
+### Tmap 지오코딩/길찾기 API
+
+- 지오코딩 (REST / GET Method)
+    
+    request:
+    
+    version: api의 버전
+    
+    searchTypCd: 주소검색 방법(신주소/구주소)
+    
+    reqAdd: 출발지 또는 도착지 등의 장소명
+    
+    appKey: Tmap Appkey
+    
+    response:
+    
+    newLat: 위도 정보
+    
+    newLon: 경도 정보
+    
+- 길찾기
+    
+    request:
+    
+    startX: 출발지의 경도 정보
+    
+    startY: 출발지의 위도 정보
+    
+    endX: 도착지의 경도 정보
+    
+    endY: 도착지의 위도 정보
+    
+    response:
+    
+    totalTime: 총 소요시간
+    
+    totalDistance: 총 이동거리 (m)
+    
+    mode: 이동 수단 종류
+    
+    stationName: 경유하는 곳의 이름 (ex. 동대구역)
 
 </div>
 </details>
