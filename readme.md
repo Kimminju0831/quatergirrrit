@@ -46,7 +46,7 @@ Azure App Service Static Web Apps is a streamlined hosting option for developers
 To get started, follow the [Static Web Apps quickstart](https://docs.microsoft.com/en-us/azure/static-web-apps/getting-started?WT.mc_id=staticwebapps-docs-cxa) to build and deploy your first static web app in minutes. For more info about Static Web Apps, see the [Static Web Apps documentation](https://docs.microsoft.com/en-us/azure/static-web-apps/?WT.mc_id=build2020_swa-docs-cxa) and the guided learning paths in Microsoft Learn for [creating and publishing an Angular, React, Svelte, or Vue JavaScript app and API](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api/?WT.mc_id=build2020_swa-frameworks-cxa) or for [creating and publishing an app with the Gatsby static site generator](https://docs.microsoft.com/en-us/learn/modules/create-deploy-static-webapp-gatsby-app-service/?WT.mc_id=build2020_swa-sitegen-cxa).
 <br>
 <br>
-# Vanilla JavaScript App
+<h3>Vanilla JavaScript App</h3>
 
 [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build JavaScript apps in minutes. Use this repo with the [quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=vanilla-javascript) to build and customize a new static site.
 
