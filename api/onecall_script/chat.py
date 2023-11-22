@@ -5,13 +5,13 @@ import requests
 import openai
 import sys
 import json
-
+import apikey
 
 def create_script(departure, arrival, datetime):
 
     CONTENT = departure + "에서 " + arrival + "으로 " + datetime + " 에 가는 기차 승차권을 예매하는 말을 1줄로 해줘" 
 
-    openai.api_key = "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"
+    openai.api_key = apikey.apikey
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
