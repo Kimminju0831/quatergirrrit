@@ -924,19 +924,6 @@
       // 서버에서 받아온 텍스트 데이터를 script 엘리먼트에 설정
       document.querySelector('#script').textContent = script;
   
-      //Kakao.init('391acf89e1f687dc86a1818add37f25a'); // 초기화 (한 번만 초기화 필요)
-  //
-      //function sendLink() { // 카카오톡 공유하기
-      //  Kakao.Link.sendDefault({
-      //    objectType: 'text',
-      //    text: text, // 서버에서 받아온 텍스트를 사용
-      //    link: {
-      //      mobileWebUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-      //      webUrl: 'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-      //    },
-      //  });
-      //}
-  
     } catch (error) {
       // 오류 처리
       console.error('Error submitting form:', error);
